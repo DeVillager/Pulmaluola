@@ -1,5 +1,7 @@
-package pulmupele;
+package logiikka;
 
+import elementit.Seina;
+import elementit.Hahmo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;

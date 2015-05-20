@@ -1,5 +1,7 @@
 package pulmupele;
 
+import elementit.Seina;
+import elementit.Hahmo;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 

@@ -1,6 +1,7 @@
 
-package pulmupele;
+package logiikka;
 
+import elementit.Seina;
 import java.util.ArrayList;
 
 

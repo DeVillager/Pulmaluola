@@ -1,8 +1,9 @@
-pulmupele\Main.class
-pulmupele\Hahmo.class
-pulmupele\Seina.class
-pulmupele\Piirtoalusta.class
-pulmupele\Seinienrakentaja.class
-pulmupele\Nappaimistonkuuntelija.class
-pulmupele\Liikekontrolleri.class
-pulmupele\Kayttoliittyma.class
+logiikka/Nappaimistonkuuntelija.class
+elementit/Hahmo.class
+pulmupele/Main.class
+logiikka/Seinienrakentaja.class
+elementit/Seina.class
+logiikka/Piirtoalusta.class
+logiikka/Peli.class
+logiikka/Liikekontrolleri.class
+pulmupele/Kayttoliittyma.class
