@@ -1,4 +1,4 @@
-package logiikka;
+package pulmupele;
 
 import elementit.Seina;
 import elementit.Hahmo;

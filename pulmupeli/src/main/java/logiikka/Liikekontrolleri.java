@@ -14,14 +14,14 @@ public class Liikekontrolleri {
         this.seinat = seinat;
     }
 
-    boolean tarkastaLiike(int keyCode) {
+    public boolean tarkastaLiike(int keyCode) {
         if (keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40) {
-            return tarkastaTormaako(keyCode);
+            return tarkastaEihanTormaa(keyCode);
         }
-        return false;
+        return true;
     }
 
-    boolean tarkastaTormaako(int keyCode) {
+    boolean tarkastaEihanTormaa(int keyCode) {
         int x = hahmo.getX();
         int y = hahmo.getY();
 

@@ -1,13 +1,8 @@
-package pulmupele;
+package elementit;
 
-
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import elementit.Hahmo;
 
 
 public class HahmoTest {
@@ -35,10 +30,15 @@ public class HahmoTest {
     }
     
     @Test
-    public void siirtyminenToimii() {
+    public void siirtyminenXToimii() {
         hahmo.siirry(-80,0);
         assertEquals(40, hahmo.getX());
     }
-
-
+    
+    @Test
+    public void siirtyminenYToimii() {
+        hahmo.siirry(0, 80);
+        assertEquals(160, hahmo.getY());
+    }
+    
 }

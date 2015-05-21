@@ -1,9 +1,7 @@
 package pulmupele;
 
 import logiikka.Seinienrakentaja;
-import logiikka.Nappaimistonkuuntelija;
 import logiikka.Liikekontrolleri;
-import logiikka.Piirtoalusta;
 import elementit.Seina;
 import elementit.Hahmo;
 import java.awt.Container;
@@ -11,14 +9,14 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import logiikka.Peli;
+
 
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Hahmo hahmo;
     private ArrayList<Seina> lista;
-    private Peli peli;
+
 
     public Kayttoliittyma(Hahmo hahmo, ArrayList<Seina> lista) {
         this.hahmo = hahmo;

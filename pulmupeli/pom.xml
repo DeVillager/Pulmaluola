@@ -16,7 +16,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
-            <scope>test</scope>
+            <type>jar</type>
         </dependency>
     </dependencies>
 
@@ -36,23 +36,15 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.4</version>
                 <configuration>
-        <targetClasses>
-            <param>pulmupele.Hahmo*</param>
-            <param>pulmupele.Liikekontrolleri*</param>
-            <param>pulmupele.Nappaimistokuuntelija*</param>
-            <param>pulmupele.Piirtoalusta*</param>
-            <param>pulmupele.Seina*</param>
-            <param>pulmupele.Seinienrakentaja*</param>
-        </targetClasses>
-        <targetTests>
-            <param>pulmupele.Hahmo*</param>
-            <param>pulmupele.Liikekontrolleri*</param>
-            <param>pulmupele.Nappaimistokuuntelija*</param>
-            <param>pulmupele.Piirtoalusta*</param>
-            <param>pulmupele.Seina*</param>
-            <param>pulmupele.Seinienrakentaja*</param>
-        </targetTests>
-    </configuration>
+                    <targetClasses>
+                        <param>elementit*</param>
+                        <param>logiikka*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>elementit*</param>
+                        <param>logiikka*</param>
+                    </targetTests>
+                </configuration>
             </plugin>
             
             <plugin>

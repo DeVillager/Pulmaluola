@@ -2,6 +2,7 @@
 package elementit;
 
 import java.awt.Graphics;
+import pulmupele.Piirtoalusta;
 
 public class Hahmo {
     
