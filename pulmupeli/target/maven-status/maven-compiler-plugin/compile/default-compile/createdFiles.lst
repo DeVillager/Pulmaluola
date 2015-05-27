@@ -1,8 +1,14 @@
-logiikka\Seinienrakentaja.class
+elementit\Maali.class
+elementit\Hahmo.class
+elementit\Seina.class
+pulmupele\Soitin.class
+logiikka\Peli.class
 pulmupele\Main.class
 logiikka\Liikekontrolleri.class
-elementit\Hahmo.class
+logiikka\Kentanrakentaja.class
 pulmupele\Piirtoalusta.class
-elementit\Seina.class
+grafiikka\Kuva.class
+elementit\Elementti.class
 pulmupele\Nappaimistonkuuntelija.class
+elementit\Laatikko.class
 pulmupele\Kayttoliittyma.class

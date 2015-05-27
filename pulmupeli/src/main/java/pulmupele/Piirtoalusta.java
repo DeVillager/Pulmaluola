@@ -1,5 +1,6 @@
 package pulmupele;
 
+import elementit.Elementti;
 import elementit.Seina;
 import elementit.Hahmo;
 import java.awt.Color;
@@ -10,22 +11,25 @@ import javax.swing.JPanel;
 public class Piirtoalusta extends JPanel {
     
     private Hahmo hahmo;
-    private ArrayList<Seina> lista;
+    private ArrayList<Elementti> kenttalista;
 
-    public Piirtoalusta(Hahmo hahmo, ArrayList<Seina> lista) {
-        super.setBackground(Color.WHITE);
+    public Piirtoalusta(Hahmo hahmo, ArrayList<Elementti> lista) {
+        super.setBackground(Color.BLACK);
         this.hahmo = hahmo;
-        this.lista = lista;
+        this.kenttalista = lista;
     }
 
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         
-        for (Seina seina : lista) {
-            seina.piirra(graphics);
+        for (Elementti kenttaelementti : kenttalista) { // paranna niin etta seinat piirretaan vain kerran!!
+//            if (kenttaelementti.getId() == "seina") {
+                kenttaelementti.piirra(graphics);
+////                kenttalista.remove(kenttaelementti);
+//            }
+            
         }
-         graphics.setColor(Color.RED);
         hahmo.piirra(graphics);
     }
 

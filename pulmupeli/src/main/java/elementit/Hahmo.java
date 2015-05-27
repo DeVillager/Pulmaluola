@@ -1,14 +1,25 @@
-
 package elementit;
 
+import static com.sun.webkit.graphics.WCImage.getImage;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import pulmupele.Piirtoalusta;
 
-public class Hahmo {
-    
+public class Hahmo extends JPanel implements Elementti {
+
     private int x;
     private int y;
     private int koko;
+    private BufferedImage man;
 
     public Hahmo(int x, int y, int koko) {
         this.x = x;
@@ -23,9 +34,21 @@ public class Hahmo {
     public int getY() {
         return y;
     }
-    
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public int getKoko() {
         return koko;
+    }
+
+    public String getId() {
+        return "hahmo";
     }
 
     public void siirry(int xmuutos, int ymuutos) {
@@ -34,7 +57,11 @@ public class Hahmo {
     }
 
     public void piirra(Graphics graphics) {
-        graphics.fillRect(x, y, koko, koko);
+        try {
+            man = ImageIO.read(new File("C:\\slimeb.png"));
+        } catch (IOException ex) {
+            System.out.println("ei onnittu");
+        }
+        graphics.drawImage(man, x, y, this);
     }
-    
 }

@@ -1,5 +1,6 @@
 package logiikka;
 
+import elementit.Elementti;
 import elementit.Seina;
 import elementit.Hahmo;
 import java.util.ArrayList;
@@ -7,11 +8,11 @@ import java.util.ArrayList;
 public class Liikekontrolleri {
 
     private Hahmo hahmo;
-    private ArrayList<Seina> seinat;
+    private ArrayList<Elementti> kenttaelementit;
 
-    public Liikekontrolleri(Hahmo hahmo, ArrayList<Seina> seinat) {
+    public Liikekontrolleri(Hahmo hahmo, ArrayList<Elementti> kelementit) {
         this.hahmo = hahmo;
-        this.seinat = seinat;
+        this.kenttaelementit = kelementit;
     }
 
     public boolean tarkastaLiike(int keyCode) {
@@ -37,16 +38,42 @@ public class Liikekontrolleri {
         if (keyCode == 40) {
             y += hahmo.getKoko();
         }
-        for (Seina seina : seinat) {
-            if (seina.getX() == x && seina.getY() == y) {
-                return false;
+        for (Elementti elem : kenttaelementit) {        // siistitään myöhemmin tarkastaEihanTormaa-kutsuvaksi metodiksi
+            if (elem.getX() == x && elem.getY() == y) { // tarkastellaan onko edes elementtiä edessä
+                String id = elem.getId();   // jos on niin katsotaan mikä elementti
+                if ("seina".equals(id)) {
+                    return false;
+                } else if ("laatikko".equals(id)) {
+                    int x2 = elem.getX();
+                    int y2 = elem.getY();
+                    if (keyCode == 37) {
+                        x2 -= hahmo.getKoko();
+                    }
+                    if (keyCode == 39) {
+                        x2 += hahmo.getKoko();
+                    }
+                    if (keyCode == 38) {
+                        y2 -= hahmo.getKoko();
+                    }
+                    if (keyCode == 40) {
+                        y2 += hahmo.getKoko();
+                    }
+                    for (Elementti elem2 : kenttaelementit) {
+                        if (elem2.getX() == x2 && elem2.getY() == y2) {
+                            return false;
+                        }
+                    }
+                    elem.setX(x2);
+                    elem.setY(y2);
+                    return true;
+                }
             }
         }
         return true;
     }
-    
-    public ArrayList<Seina> getSeinat() {
-        return seinat;
+
+    public ArrayList<Elementti> getKenttaobjektit() {
+        return kenttaelementit;
     }
 
 }

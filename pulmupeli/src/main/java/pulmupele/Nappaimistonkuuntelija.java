@@ -7,21 +7,25 @@ package pulmupele;
 
 import logiikka.Liikekontrolleri;
 import elementit.Hahmo;
+import elementit.Maali;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import logiikka.Liikekontrolleri;
 
 public class Nappaimistonkuuntelija implements KeyListener {
+    
 
     private Hahmo hahmo;
     private Component component;
     private Liikekontrolleri tarkastaja;
+    private Maali maali;
 
     public Nappaimistonkuuntelija(Hahmo hahmo, Component component, Liikekontrolleri tarkastaja) {
         this.hahmo = hahmo;
         this.component = component;
         this.tarkastaja = tarkastaja;
+        maali = new Maali(40, 12*40, hahmo.getKoko());
     }
 
     @Override
@@ -39,6 +43,10 @@ public class Nappaimistonkuuntelija implements KeyListener {
             }
         }
         component.repaint();
+        if (hahmo.getX() == maali.getX() && hahmo.getY() == maali.getY()) {
+            System.out.println("VOITIT!");
+            
+        }
     }
 
     @Override

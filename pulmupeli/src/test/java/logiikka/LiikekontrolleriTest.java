@@ -1,5 +1,6 @@
 package logiikka;
 
+import elementit.Elementti;
 import elementit.Hahmo;
 import elementit.Seina;
 import java.util.ArrayList;
@@ -10,16 +11,16 @@ import static org.junit.Assert.*;
 public class LiikekontrolleriTest {
 
     Hahmo hahmo;
-    ArrayList<Seina> seinat = new ArrayList<Seina>();
+    ArrayList<Elementti> elementit = new ArrayList<Elementti>();
     Liikekontrolleri k;
 
     @Before
     public void setUp() {
         hahmo = new Hahmo(1, 1, 1);
-        seinat = new ArrayList<>();
-        seinat.add(new Seina(2, 1, 9));
-        seinat.add(new Seina(1, 2, 9));
-        k = new Liikekontrolleri(hahmo, seinat);
+        elementit = new ArrayList<>();
+        elementit.add(new Seina(2, 1, 9));
+        elementit.add(new Seina(1, 2, 9));
+        k = new Liikekontrolleri(hahmo, elementit);
     }
 
     @Test
@@ -44,13 +45,13 @@ public class LiikekontrolleriTest {
 
     @Test
     public void tormaysTarkastusToimiiKunLiikuttuXSuunnassaHahmonKoonVerran() {
-        seinat.add(new Seina(hahmo.getX() + hahmo.getKoko(), hahmo.getY(), 9));
+        elementit.add(new Seina(hahmo.getX() + hahmo.getKoko(), hahmo.getY(), 9));
         assertEquals(k.tarkastaEihanTormaa(39), false);
     }
 
     @Test
     public void tormaysTarkastusToimiiKunLiikuttuYSuunnassaHahmonKoonVerran() {
-        seinat.add(new Seina(hahmo.getX(), hahmo.getY() + hahmo.getKoko(), 9));
+        elementit.add(new Seina(hahmo.getX(), hahmo.getY() + hahmo.getKoko(), 9));
         assertEquals(k.tarkastaEihanTormaa(40), false);
     }
 

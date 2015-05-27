@@ -1,5 +1,6 @@
 package pulmupele;
 
+import elementit.Elementti;
 import elementit.Hahmo;
 import elementit.Seina;
 import java.awt.Color;
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
 public class PiirtoalustaTest extends JPanel {
 
     Hahmo hahmo;
-    ArrayList<Seina> seinat;
+    ArrayList<Elementti> elementit;
     Piirtoalusta pa;
     Graphics g;
 
@@ -21,10 +22,10 @@ public class PiirtoalustaTest extends JPanel {
     public void setUp() {
         super.setBackground(Color.WHITE);
         hahmo = new Hahmo(1, 1, 1);
-        seinat = new ArrayList<>();
-        seinat.add(new Seina(2, 1, 9));
-        seinat.add(new Seina(1, 2, 9));
-        pa = new Piirtoalusta(hahmo, seinat);
+        elementit = new ArrayList<>();
+        elementit.add(new Seina(2, 1, 9));
+        elementit.add(new Seina(1, 2, 9));
+        pa = new Piirtoalusta(hahmo, elementit);
         
     }
 
