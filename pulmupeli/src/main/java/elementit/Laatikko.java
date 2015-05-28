@@ -1,5 +1,6 @@
 package elementit;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -45,12 +46,14 @@ public class Laatikko extends JPanel implements Elementti {
     }
 
     public void piirra(Graphics graphics) {
-        try {
-            boulder = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\rock.png"));
-        } catch (IOException ex) {
-            System.out.println("ei onnittu");
+//        try {
+//            boulder = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\rock.png"));
+//        } catch (IOException ex) {
+//            System.out.println("ei onnittu");
+//        }
+//        graphics.drawImage(boulder, x, y, this);
+            graphics.setColor(Color.blue);
+            graphics.fillOval(x, y, koko, koko);
         }
-        graphics.drawImage(boulder, x, y, this);
-    }
 
-}
+    }

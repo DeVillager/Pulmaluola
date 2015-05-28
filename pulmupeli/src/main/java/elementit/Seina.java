@@ -1,6 +1,7 @@
 package elementit;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -46,13 +47,13 @@ public class Seina extends JPanel implements Elementti {
     }
 
     public void piirra(Graphics graphics) {
-//        graphics.setColor(Color.BLACK);
-//        graphics.fillRect(x, y, koko, koko);
-        try {
-            wall = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\wall.png"));
-        } catch (IOException ex) {
-            System.out.println("ei onnittu");
-        }
-        graphics.drawImage(wall, x, y, this);
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(x, y, koko, koko);
+//        try {
+//            wall = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\wall.png"));
+//        } catch (IOException ex) {
+//            System.out.println("ei onnittu");
+//        }
+//        graphics.drawImage(wall, x, y, this);
     }
 }

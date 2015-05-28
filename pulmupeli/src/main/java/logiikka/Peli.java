@@ -31,7 +31,7 @@ public class Peli {
 
     public void luoIkkuna() {
         
-        Soitin soitin = new Soitin("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\sky.wav");
+//        Soitin soitin = new Soitin("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\sky.wav");
         frame = new JFrame("Pulmapeli");
         frame.setPreferredSize(new Dimension(616, 638));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

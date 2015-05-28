@@ -1,6 +1,7 @@
 package elementit;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -51,11 +52,13 @@ public class Hahmo extends JPanel implements Elementti {
     }
 
     public void piirra(Graphics graphics) {
-        try {
-            man = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\slimeb.png"));
-        } catch (IOException ex) {
-            System.out.println("ei onnittu");
-        }
-        graphics.drawImage(man, x, y, this);
+//        try {
+//            man = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\slimeb.png"));
+//        } catch (IOException ex) {
+//            System.out.println("ei onnittu");
+//        }
+//        graphics.drawImage(man, x, y, this);
+        graphics.setColor(Color.red);
+        graphics.fillOval(x, y, koko, koko);
     }
 }

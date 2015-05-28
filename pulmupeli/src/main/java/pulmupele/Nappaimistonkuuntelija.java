@@ -21,13 +21,13 @@ public class Nappaimistonkuuntelija implements KeyListener {
     private Piirtoalusta component;
     private Liikekontrolleri tarkastaja;
     private Maali maali;
-    private Peli peli;
+//    private Peli peli;
 
     public Nappaimistonkuuntelija(Hahmo hahmo, Piirtoalusta piirtoalusta, Liikekontrolleri tarkastaja, Peli peli) {
         this.hahmo = hahmo;
         this.component = piirtoalusta;
         this.tarkastaja = tarkastaja;
-        this.peli = peli;
+//        this.peli = peli;
         
     }
 

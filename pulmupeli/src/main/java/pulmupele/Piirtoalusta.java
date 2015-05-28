@@ -16,9 +16,9 @@ public class Piirtoalusta extends JPanel {
     private ArrayList<Elementti> kenttalista;
 
     public Piirtoalusta(Hahmo hahmo, Maali maali, ArrayList<Elementti> lista) {
-        super.setBackground(Color.BLACK);
+        super.setBackground(Color.white);
         this.hahmo = hahmo;
-        this.maali = maali;
+//        this.maali = maali;
         this.kenttalista = lista;
     }
 
