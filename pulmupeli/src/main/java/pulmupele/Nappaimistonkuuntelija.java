@@ -12,20 +12,23 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import logiikka.Liikekontrolleri;
+import logiikka.Peli;
 
 public class Nappaimistonkuuntelija implements KeyListener {
     
 
     private Hahmo hahmo;
-    private Component component;
+    private Piirtoalusta component;
     private Liikekontrolleri tarkastaja;
     private Maali maali;
+    private Peli peli;
 
-    public Nappaimistonkuuntelija(Hahmo hahmo, Component component, Liikekontrolleri tarkastaja) {
+    public Nappaimistonkuuntelija(Hahmo hahmo, Piirtoalusta piirtoalusta, Liikekontrolleri tarkastaja, Peli peli) {
         this.hahmo = hahmo;
-        this.component = component;
+        this.component = piirtoalusta;
         this.tarkastaja = tarkastaja;
-        maali = new Maali(40, 12*40, hahmo.getKoko());
+        this.peli = peli;
+        
     }
 
     @Override
@@ -40,12 +43,20 @@ public class Nappaimistonkuuntelija implements KeyListener {
                 hahmo.siirry(0, -1 * hahmo.getKoko());
             } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 hahmo.siirry(0, hahmo.getKoko());
+//            } else if (e.getKeyCode() == KeyEvent.VK_R) {
+////                this.component.getLista();
+////                Peli peli2 = new Peli();
+////                peli2.luoIkkuna();
+////                peli.getLista().clear();
+////                peli.getRakentaja().luoKentta(hahmo.getKoko());
+////                hahmo.setX(7*hahmo.getKoko());
+////                hahmo.setY(4*hahmo.getKoko());
+//                
             }
         }
         component.repaint();
         if (hahmo.getX() == maali.getX() && hahmo.getY() == maali.getY()) {
             System.out.println("VOITIT!");
-            
         }
     }
 

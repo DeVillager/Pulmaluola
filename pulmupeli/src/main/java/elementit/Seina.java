@@ -1,9 +1,8 @@
 package elementit;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -50,7 +49,7 @@ public class Seina extends JPanel implements Elementti {
 //        graphics.setColor(Color.BLACK);
 //        graphics.fillRect(x, y, koko, koko);
         try {
-            wall = ImageIO.read(new File("C:\\wall.png"));
+            wall = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\wall.png"));
         } catch (IOException ex) {
             System.out.println("ei onnittu");
         }

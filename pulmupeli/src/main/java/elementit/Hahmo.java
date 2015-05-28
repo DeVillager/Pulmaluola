@@ -1,18 +1,12 @@
 package elementit;
 
-import static com.sun.webkit.graphics.WCImage.getImage;
-import java.awt.Color;
+
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import pulmupele.Piirtoalusta;
 
 public class Hahmo extends JPanel implements Elementti {
 
@@ -58,7 +52,7 @@ public class Hahmo extends JPanel implements Elementti {
 
     public void piirra(Graphics graphics) {
         try {
-            man = ImageIO.read(new File("C:\\slimeb.png"));
+            man = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\slimeb.png"));
         } catch (IOException ex) {
             System.out.println("ei onnittu");
         }

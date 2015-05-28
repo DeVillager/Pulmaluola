@@ -5,10 +5,9 @@
  */
 package elementit;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -53,7 +52,7 @@ public class Maali extends JPanel implements Elementti {
 
     public void piirra(Graphics graphics) {
         try {
-            goal = ImageIO.read(new File("C:\\goal.png"));
+            goal = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\goal.png"));
         } catch (IOException ex) {
             System.out.println("ei onnittu");
         }
