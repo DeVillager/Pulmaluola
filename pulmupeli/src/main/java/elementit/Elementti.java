@@ -13,6 +13,7 @@ public interface Elementti {
     void setX(int x);
     void setY(int y);
     
+
     void piirra(Graphics graphics);
     
 }

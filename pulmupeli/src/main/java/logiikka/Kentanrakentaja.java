@@ -2,6 +2,7 @@ package logiikka;
 
 import elementit.Elementti;
 import elementit.Laatikko;
+import elementit.Maali;
 import elementit.Seina;
 import java.util.ArrayList;
 
@@ -9,13 +10,14 @@ public class Kentanrakentaja {
 
     private ArrayList<Elementti> kenttaelementit;
     private int koko;
+    private Maali maali;
 
     public Kentanrakentaja(ArrayList<Elementti> kelementit, int koko) {
         this.kenttaelementit = kelementit;
         this.koko = koko;
     }
 
-    public ArrayList<Elementti> getSeinat() {
+    public ArrayList<Elementti> getLista() {
         return kenttaelementit;
     }
 
@@ -23,6 +25,7 @@ public class Kentanrakentaja {
         luoReunat(koko);
         lisaaKentalleSeinat();
         lisaaKentalleLaatikot();
+        lisaaMaali();
     }
 
     private void luoReunat(int koko) {
@@ -166,6 +169,11 @@ public class Kentanrakentaja {
         lisaaSeina(6, 13, koko);
         lisaaSeina(7, 13, koko);
         lisaaSeina(8, 13, koko);
+    }
+
+    private void lisaaMaali() {
+       this.maali = new Maali(koko, 12*koko, koko);
+        kenttaelementit.add(maali);
     }
 
 }

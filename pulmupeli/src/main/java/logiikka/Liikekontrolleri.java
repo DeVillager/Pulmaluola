@@ -3,23 +3,26 @@ package logiikka;
 import elementit.Elementti;
 import elementit.Seina;
 import elementit.Hahmo;
+import elementit.Maali;
 import java.util.ArrayList;
 
 public class Liikekontrolleri {
 
     private Hahmo hahmo;
     private ArrayList<Elementti> kenttaelementit;
+    private Maali maali;
 
-    public Liikekontrolleri(Hahmo hahmo, ArrayList<Elementti> kelementit) {
+    public Liikekontrolleri(Hahmo hahmo, Maali maali, ArrayList<Elementti> kelementit) {
         this.hahmo = hahmo;
         this.kenttaelementit = kelementit;
+        this.maali = maali;
     }
 
     public boolean tarkastaLiike(int keyCode) {
         if (keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40) {
             return tarkastaEihanTormaa(keyCode);
         }
-        if (keyCode == 82) {
+        if (keyCode == 82) {  //aiheuttaa bugin!!
             return true;
         }
         return true;

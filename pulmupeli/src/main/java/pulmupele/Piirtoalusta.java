@@ -18,7 +18,7 @@ public class Piirtoalusta extends JPanel {
     public Piirtoalusta(Hahmo hahmo, Maali maali, ArrayList<Elementti> lista) {
         super.setBackground(Color.white);
         this.hahmo = hahmo;
-//        this.maali = maali;
+        this.maali = maali;
         this.kenttalista = lista;
     }
 
@@ -28,12 +28,14 @@ public class Piirtoalusta extends JPanel {
         for (Elementti kenttaelementti : kenttalista) { // paranna niin etta seinat piirretaan vain kerran!!
                 kenttaelementti.piirra(graphics);
         }
-//        maali.piirra(graphics);
+        maali.piirra(graphics);
         hahmo.piirra(graphics);
     }
     
     public ArrayList<Elementti> getLista() {
         return this.kenttalista;
     }
+    
+  
 
 }
