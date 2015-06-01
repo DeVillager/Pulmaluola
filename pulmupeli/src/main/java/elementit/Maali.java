@@ -8,7 +8,9 @@ package elementit;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Maali extends JPanel implements Elementti {
@@ -16,7 +18,8 @@ public class Maali extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-    private BufferedImage goal;
+    private String imgFileName = "images/goal.png";
+    private Image img = luoKuva(imgFileName);
 
     public Maali(int x, int y, int koko) {
         this.x = x;
@@ -49,8 +52,18 @@ public class Maali extends JPanel implements Elementti {
     }
 
     public void piirra(Graphics graphics) {
-
-        graphics.setColor(Color.GREEN);
-        graphics.fillOval(x, y, koko, koko);
+            graphics.drawImage(img, x, y, null);
+    }
+    
+     private Image luoKuva(String imgFileName) {
+        ImageIcon icon = null;
+        java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
+        if (imgURL != null) {
+            icon = new ImageIcon(imgURL);
+        } else {
+            System.err.println("Ei löytynyt kuvaa  " + imgFileName);
+        }
+        Image img = icon.getImage();
+        return img;
     }
 }

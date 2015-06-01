@@ -1,11 +1,8 @@
 package elementit;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Laatikko extends JPanel implements Elementti {
@@ -13,7 +10,8 @@ public class Laatikko extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-    private BufferedImage boulder;
+    private String imgFileName = "images/rock.png";
+    private Image img = luoKuva(imgFileName);
 
     public Laatikko(int x, int y, int koko) {
         this.x = x;
@@ -46,14 +44,19 @@ public class Laatikko extends JPanel implements Elementti {
     }
 
     public void piirra(Graphics graphics) {
-//        try {
-//            boulder = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\rock.png"));
-//        } catch (IOException ex) {
-//            System.out.println("ei onnittu");
-//        }
-//        graphics.drawImage(boulder, x, y, this);
-            graphics.setColor(Color.blue);
-            graphics.fillOval(x, y, koko, koko);
-        }
-
+        graphics.drawImage(img, x, y, null);
     }
+    
+    private Image luoKuva(String imgFileName) {
+        ImageIcon icon = null;
+        java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
+        if (imgURL != null) {
+            icon = new ImageIcon(imgURL);
+        } else {
+            System.err.println("Ei löytynyt kuvaa  " + imgFileName);
+        }
+        Image img = icon.getImage();
+        return img;
+    }
+
+}

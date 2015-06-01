@@ -30,5 +30,10 @@ public class SeinaTest {
         assertEquals(3, seina.getKoko());
     }
     
+        @Test
+    public void identiteettiOikein() {
+        assertEquals(seina.getId(), "seina");
+    }
+    
 
 }

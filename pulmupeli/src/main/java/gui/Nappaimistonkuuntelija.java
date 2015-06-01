@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pulmupele;
+package gui;
 
 import logiikka.Liikekontrolleri;
 import elementit.Hahmo;
@@ -51,7 +51,8 @@ public class Nappaimistonkuuntelija implements KeyListener {
         component.repaint();
         if (hahmo.getX() == this.peli.getMaali().getX() && hahmo.getY() == this.peli.getMaali().getY()) {
             System.out.println("VOITIT!");
-            this.peli.getJframe().removeAll();
+            this.peli.getPelinFrame().dispose();
+            peli.luoVoittoIkkuna();
         }
     }
 

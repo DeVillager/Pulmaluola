@@ -3,10 +3,12 @@ package elementit;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Seina extends JPanel implements Elementti {
@@ -14,7 +16,8 @@ public class Seina extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-    private BufferedImage wall;
+     private String imgFileName = "images/wall.png";
+    private Image img = luoKuva(imgFileName);
 
     public Seina(int x, int y, int koko) {
         this.x = x;
@@ -47,13 +50,18 @@ public class Seina extends JPanel implements Elementti {
     }
 
     public void piirra(Graphics graphics) {
-        graphics.setColor(Color.BLACK);
-        graphics.fillRect(x, y, koko, koko);
-//        try {
-//            wall = ImageIO.read(new File("C:\\Pulmaluola\\pulmupeli\\src\\main\\java\\Tiedostot\\wall.png"));
-//        } catch (IOException ex) {
-//            System.out.println("ei onnittu");
-//        }
-//        graphics.drawImage(wall, x, y, this);
+        graphics.drawImage(img, x, y, this);
+    }
+    
+    private Image luoKuva(String imgFileName) {
+        ImageIcon icon = null;
+        java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
+        if (imgURL != null) {
+            icon = new ImageIcon(imgURL);
+        } else {
+            System.err.println("Ei löytynyt kuvaa  " + imgFileName);
+        }
+        Image img = icon.getImage();
+        return img;
     }
 }

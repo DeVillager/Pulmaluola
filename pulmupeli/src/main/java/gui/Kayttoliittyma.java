@@ -1,4 +1,4 @@
-package pulmupele;
+package gui;
 
 import logiikka.Peli;
 
@@ -7,12 +7,12 @@ public class Kayttoliittyma implements Runnable {
     private Peli peli;
 
     public Kayttoliittyma() {
-        this.peli = new Peli();
+        this.peli = new Peli(40);
     }
 
     @Override
     public void run() {
-        peli.luoIkkuna();
+        peli.kaynnistaValikko();
     }
 
 }

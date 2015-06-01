@@ -7,4 +7,6 @@
 |19.5.2015|6h|Pelin ohjelmoimista ja luokkakaavio|
 |21.5.2015|3h|JUnit testien tekemistä|
 |26.5.2015|4h|Pelilogiikan parantelua|
-|27.5.2015|5h|Grafiikan ja musiikin lisääminen|
+|27.5.2015|5h|Grafiikan parantelua|
+|31.5.2015|3h|Rakenteen parantelua|
+|1.6.2015|5h|Alku- ja loppuikkunoiden luonti sekä testien tekemistä|

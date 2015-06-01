@@ -30,6 +30,11 @@ public class HahmoTest {
     }
     
     @Test
+    public void identiteettiOikein() {
+        assertEquals(hahmo.getId(), "hahmo");
+    }
+    
+    @Test
     public void siirtyminenXToimii() {
         hahmo.siirry(-80,0);
         assertEquals(40, hahmo.getX());
