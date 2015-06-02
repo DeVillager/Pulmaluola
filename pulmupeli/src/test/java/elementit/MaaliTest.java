@@ -1,5 +1,6 @@
 package elementit;
 
+import java.util.Scanner;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,8 +30,21 @@ public class MaaliTest {
     }
 
     @Test
+    public void setteriXToimii() {
+        maali.setX(4);
+        assertEquals(4, maali.getX());
+    }
+
+    @Test
+    public void setteriYToimii() {
+        maali.setY(5);
+        assertEquals(5, maali.getY());
+    }
+
+    @Test
     public void identiteettiOikein() {
         assertEquals(maali.getId(), "maali");
     }
+
 
 }

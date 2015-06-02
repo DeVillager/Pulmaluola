@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="elementit.HahmoTest" time="0.888" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="elementit.HahmoTest" time="0.671" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_45\jre\bin"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\varjorepo\pulmupeli"/>
+    <property name="user.dir" value="C:\Users\Anja\klooni\pulmupeli"/>
     <property name="java.runtime.version" value="1.8.0_45-b15"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_45\jre\lib\endorsed"/>
@@ -61,10 +61,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="elementit.HahmoTest" name="getteriXToimii" time="0.632"/>
+  <testcase classname="elementit.HahmoTest" name="setteriYToimii" time="0.437"/>
+  <testcase classname="elementit.HahmoTest" name="getteriXToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="getteriKokoToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="getteriYToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="identiteettiOikein" time="0"/>
   <testcase classname="elementit.HahmoTest" name="siirtyminenXToimii" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="setteriXToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="siirtyminenYToimii" time="0"/>
 </testsuite>

@@ -29,6 +29,18 @@ public class HahmoTest {
         assertEquals(40, hahmo.getKoko());
     }
     
+        @Test
+    public void setteriXToimii() {
+        hahmo.setX(4);
+        assertEquals(4, hahmo.getX());
+    }
+    
+    @Test
+    public void setteriYToimii() {
+        hahmo.setY(5);
+        assertEquals(5, hahmo.getY());
+    }
+    
     @Test
     public void identiteettiOikein() {
         assertEquals(hahmo.getId(), "hahmo");

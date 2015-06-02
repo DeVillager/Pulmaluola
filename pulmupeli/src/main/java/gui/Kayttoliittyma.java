@@ -1,7 +1,5 @@
 package gui;
 
-import logiikka.Peli;
-
 public class Kayttoliittyma implements Runnable {
 
     private Peli peli;
@@ -12,7 +10,7 @@ public class Kayttoliittyma implements Runnable {
 
     @Override
     public void run() {
-        peli.kaynnistaValikko();
+        peli.kaynnista();
     }
 
 }

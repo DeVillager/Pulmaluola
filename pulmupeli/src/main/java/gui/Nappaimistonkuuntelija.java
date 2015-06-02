@@ -12,7 +12,6 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import logiikka.Liikekontrolleri;
-import logiikka.Peli;
 
 public class Nappaimistonkuuntelija implements KeyListener {
 
@@ -51,8 +50,8 @@ public class Nappaimistonkuuntelija implements KeyListener {
         component.repaint();
         if (hahmo.getX() == this.peli.getMaali().getX() && hahmo.getY() == this.peli.getMaali().getY()) {
             System.out.println("VOITIT!");
-            this.peli.getPelinFrame().dispose();
-            peli.luoVoittoIkkuna();
+            this.peli.getIkkunanPiirtaja().getPelinFrame().dispose();
+            peli.getIkkunanPiirtaja().luoVoittoIkkuna();
         }
     }
 

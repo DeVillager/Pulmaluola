@@ -77,7 +77,7 @@ public class Kentanrakentaja {
     }
 
     private void level2L() {
-        lisaaLaatikko(6, 1, koko);
+//        lisaaLaatikko(6, 1, koko);
         lisaaLaatikko(10, 1, koko);
         lisaaLaatikko(10, 2, koko);
         lisaaLaatikko(11, 2, koko);
@@ -171,7 +171,7 @@ public class Kentanrakentaja {
         lisaaSeina(8, 13, koko);
     }
 
-    private void lisaaMaali() {
+    public void lisaaMaali() {
        this.maali = new Maali(koko, 12*koko, koko);
         kenttaelementit.add(maali);
     }

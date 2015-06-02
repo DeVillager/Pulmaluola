@@ -5,16 +5,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JButton;
-import logiikka.Peli;
 
 public class Valikkokuuntelija implements ActionListener {
 
-    private Peli peli;
+    private IkkunanPiirtaja ip;
     private final JButton aloitusNappi;
     private final JButton lopetusNappi;
 
-    public Valikkokuuntelija(Peli peli, JButton aloitusNappi, JButton lopetusNappi) {
-        this.peli = peli;
+    public Valikkokuuntelija(IkkunanPiirtaja ip, JButton aloitusNappi, JButton lopetusNappi) {
+        this.ip = ip;
         this.aloitusNappi = aloitusNappi;
         this.lopetusNappi = lopetusNappi;
     }
@@ -22,11 +21,11 @@ public class Valikkokuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == aloitusNappi) {
-            peli.luoIkkuna();
-            peli.getValikonFrame().dispose();
+           ip.getValikonFrame().dispose();
+            ip.luoPeliIkkuna();
         }
         if (e.getSource() == lopetusNappi) {
-            peli.getValikonFrame().dispose();
+            ip.getValikonFrame().dispose();
         }
     }
 

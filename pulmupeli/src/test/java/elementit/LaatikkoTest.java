@@ -27,11 +27,22 @@ public class LaatikkoTest {
     public void getteriKokoToimii() {
         assertEquals(30, laatikko.getKoko());
     }
-    
+
+    @Test
+    public void setteriXToimii() {
+        laatikko.setX(4);
+        assertEquals(4, laatikko.getX());
+    }
+
+    @Test
+    public void setteriYToimii() {
+        laatikko.setY(5);
+        assertEquals(5, laatikko.getY());
+    }
+
     @Test
     public void identiteettiOikein() {
         assertEquals(laatikko.getId(), "laatikko");
     }
-    
-    
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="elementit.LaatikkoTest" time="0.031" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="logiikka.KentanrakentajaTest" time="0.249" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_45\jre\bin"/>
@@ -61,10 +61,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="elementit.LaatikkoTest" name="setteriYToimii" time="0.031"/>
-  <testcase classname="elementit.LaatikkoTest" name="getteriXToimii" time="0"/>
-  <testcase classname="elementit.LaatikkoTest" name="getteriKokoToimii" time="0"/>
-  <testcase classname="elementit.LaatikkoTest" name="getteriYToimii" time="0"/>
-  <testcase classname="elementit.LaatikkoTest" name="identiteettiOikein" time="0"/>
-  <testcase classname="elementit.LaatikkoTest" name="setteriXToimii" time="0"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="lisaaKentalleLaatikotLisaaOikeanMaaranLaatikoita" time="0.14"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="lisaaKentalleSeinatLisaaOikeanMaaranSeinia" time="0.063"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="valmiitSeinatLisaytyy" time="0"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="seinanLisaysToimii" time="0.015"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="seinanLisaaminenToimii" time="0.016"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="laatikonLisaaminenToimii" time="0"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="seinalistanGetteriToimii" time="0.015"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="lisaaMaaliToimii" time="0"/>
+  <testcase classname="logiikka.KentanrakentajaTest" name="seinienKokoAinaSama" time="0"/>
 </testsuite>
