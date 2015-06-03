@@ -22,7 +22,7 @@ public class Liikekontrolleri {
         if (keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40) {
             return tarkastaEihanTormaa(keyCode);
         }
-        if (keyCode == 82) { 
+        if (keyCode == 82) {
             return true;
         }
         return false;

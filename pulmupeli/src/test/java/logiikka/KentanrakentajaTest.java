@@ -10,24 +10,24 @@ import static org.junit.Assert.*;
 
 public class KentanrakentajaTest {
 
-    ArrayList<Elementti> seinat;
+    ArrayList<Elementti> kenttaelementit;
     int koko = 40;
     Kentanrakentaja kr;
     Maali maali;
 
     @Before
     public void setUp() {
-        seinat = new ArrayList<Elementti>();
-        seinat.add(new Seina(40, 80, koko));
-        seinat.add(new Seina(80, 80, koko));
-        seinat.add(new Seina(120, 360, koko));
-        kr = new Kentanrakentaja(seinat, koko);
+        kenttaelementit = new ArrayList<Elementti>();
+        kenttaelementit.add(new Seina(40, 80, koko));
+        kenttaelementit.add(new Seina(80, 80, koko));
+        kenttaelementit.add(new Seina(120, 360, koko));
+        kr = new Kentanrakentaja(kenttaelementit, koko);
     }
 
     @Test
     public void valmiitSeinatLisaytyy() { // konstruktorissa luodaan listan valmiit seinat: lisaaSeina(...)
         int laskuri = 0;
-        for (Elementti seina : seinat) {
+        for (Elementti seina : kenttaelementit) {
             if (seina.getX() == 80 && seina.getY() == 80 && seina.getKoko() == koko) {
                 laskuri++;
             } else if (seina.getX() == 40 && seina.getY() == 80 && seina.getKoko() == koko) {
@@ -42,7 +42,7 @@ public class KentanrakentajaTest {
     @Test
     public void seinienKokoAinaSama() {
         boolean totuus = true;
-        for (Elementti seina : seinat) {
+        for (Elementti seina : kenttaelementit) {
             if (seina.getKoko() != 40) {
                 totuus = false;
             }
@@ -64,7 +64,7 @@ public class KentanrakentajaTest {
     public void seinanLisaysToimii() {
         kr.lisaaSeina(7, 6, koko);
         boolean totuus = false;
-        for (Elementti seina : seinat) {
+        for (Elementti seina : kenttaelementit) {
             if (seina.getX() == 7 * koko && seina.getY() == 6 * koko && seina.getKoko() == koko) {
                 totuus = true;
             }
@@ -74,14 +74,14 @@ public class KentanrakentajaTest {
 
     @Test
     public void seinalistanGetteriToimii() {
-        assertEquals(seinat, kr.getLista());
+        assertEquals(kenttaelementit, kr.getLista());
     }
 
     @Test
     public void seinanLisaaminenToimii() {
         kr.lisaaSeina(7, 8, 10);
         boolean totuus = false;
-        for (Elementti seina : seinat) {
+        for (Elementti seina : kenttaelementit) {
             if (seina.getX() == 70 && seina.getY() == 80 && seina.getKoko() == 10) {
                 totuus = true;
             }
@@ -93,7 +93,7 @@ public class KentanrakentajaTest {
     public void laatikonLisaaminenToimii() {
         kr.lisaaLaatikko(3, 5, 10);
         boolean totuus = false;
-        for (Elementti seina : seinat) {
+        for (Elementti seina : kenttaelementit) {
             if (seina.getX() == 30 && seina.getY() == 50 && seina.getKoko() == 10) {
                 totuus = true;
             }
@@ -102,24 +102,73 @@ public class KentanrakentajaTest {
     }
 
     @Test
+    public void luoKenttaLisaaOikeanMaaranElementteja() {
+        kr.getLista().clear();
+        Kentanrakentaja kr2 = new Kentanrakentaja(kenttaelementit, koko);
+        kr.luoKentta(koko);
+        kr2.luoReunat(koko);
+        kr2.lisaaKentalleLaatikot();
+        kr2.lisaaKentalleSeinat();
+        kr2.lisaaMaali();
+        assertEquals(kenttaelementit.size(), kr2.getLista().size());
+    }
+
+    @Test
+    public void luoKenttaKutsuuNeljaaMuutaMetodiaJotkaLisaaEriElementteja() {
+        int laskuri = 0;
+        kr.getLista().clear();
+        kr.luoKentta(koko);
+        for (Elementti elem : kenttaelementit) {
+            if (elem.getX() == 0 * koko && elem.getY() == 7 * koko && elem.getId() == "seina") {
+                laskuri++;
+            } else if (elem.getX() == 9 * koko && elem.getY() == 3 * koko && elem.getId() == "seina") {
+                laskuri++;
+            } else if (elem.getX() == 10 * koko && elem.getY() == 5 * koko && elem.getId() == "laatikko") {
+                laskuri++;
+            } else if (elem.getX() == 1 * koko && elem.getY() == 12 * koko && elem.getId() == "maali") {
+                laskuri++;
+            }
+        }
+        assertEquals(laskuri, 4);
+    }
+
+    @Test
+    public void luoReunatLisaaReunojenVerranSeinia() {
+        kr.getLista().clear();
+        kr.luoReunat(koko);
+        assertEquals(kenttaelementit.size(), 56);
+    }
+
+    @Test
     public void lisaaKentalleSeinatLisaaOikeanMaaranSeinia() {
         kr.lisaaKentalleSeinat();
-        assertEquals(seinat.size(), 63);
+        assertEquals(kenttaelementit.size(), 63);
     }
 
     @Test
     public void lisaaKentalleLaatikotLisaaOikeanMaaranLaatikoita() {
         kr.lisaaKentalleLaatikot();
-        assertEquals(seinat.size(), 31);
+        assertEquals(kenttaelementit.size(), 31);
     }
 
     @Test
     public void lisaaMaaliToimii() {
         kr.lisaaMaali();
         boolean totuus = false;
-        for (Elementti elem : seinat) {
-            if (elem.getId() == "maali" && elem.getX() == koko && elem.getY() == 12*koko && elem.getKoko() == koko) {
+        for (Elementti elem : kenttaelementit) {
+            if (elem.getId() == "maali" && elem.getX() == koko && elem.getY() == 12 * koko && elem.getKoko() == koko) {
                 totuus = true;
+            }
+        }
+        assertEquals(true, totuus);
+    }
+
+    @Test
+    public void kentallaEiOleElementtejaRajojenUlkopuolella() {
+        boolean totuus = true;
+        for (Elementti elem : kenttaelementit) {
+            if (elem.getX() > 15 * koko || elem.getY() > 15 * koko) {
+                totuus = false;
             }
         }
         assertEquals(true, totuus);

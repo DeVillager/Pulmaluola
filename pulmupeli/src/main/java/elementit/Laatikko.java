@@ -10,6 +10,7 @@ public class Laatikko extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
+    private String id;
     private String imgFileName = "images/rock.png";
     private Image img = luoKuva(imgFileName);
 
@@ -17,6 +18,7 @@ public class Laatikko extends JPanel implements Elementti {
         this.x = x;
         this.y = y;
         this.koko = koko;
+        this.id = "laatikko";
     }
 
     public int getX() {
@@ -40,7 +42,11 @@ public class Laatikko extends JPanel implements Elementti {
     }
 
     public String getId() {
-        return "laatikko";
+        return id;
+    }
+    
+    public void setId(String uusiId) {
+        this.id = uusiId;
     }
 
     public void piirra(Graphics graphics) {

@@ -19,7 +19,6 @@ public class Hahmo extends JPanel implements Elementti {
         this.x = x;
         this.y = y;
         this.koko = koko;
-
     }
 
     public int getX() {

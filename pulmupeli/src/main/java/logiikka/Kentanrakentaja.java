@@ -28,13 +28,13 @@ public class Kentanrakentaja {
         lisaaMaali();
     }
 
-    private void luoReunat(int koko) {
+    public void luoReunat(int koko) {
         int maxraja = 15;
         for (int i = 0; i < maxraja; i++) {
             for (int j = 0; j < maxraja; j++) {
                 if ((i == 0 || j == 0) && koko > 0) {
                     lisaaSeina(i, j, koko);
-                } else if (i == maxraja - 1 || j == maxraja - 1) {
+                } else if (i >= maxraja - 1 || j >= maxraja - 1) {
                     lisaaSeina(i, j, koko);
                 }
             }
@@ -59,22 +59,22 @@ public class Kentanrakentaja {
         level2L();
     }
 
-    private void level1S() {
-        lisaaSeina(4, 4, koko);
-        lisaaSeina(3, 1, koko);
-        lisaaSeina(8, 11, koko);
-        lisaaSeina(7, 4, koko);
-        lisaaSeina(5, 3, koko);
-    }
-
-    private void level1L() {
-        lisaaLaatikko(3, 2, koko);
-        lisaaLaatikko(4, 1, koko);
-        lisaaLaatikko(5, 6, koko);
-        lisaaLaatikko(8, 10, koko);
-        lisaaLaatikko(13, 12, koko);
-        lisaaLaatikko(10, 9, koko);
-    }
+//    private void level1S() {
+//        lisaaSeina(4, 4, koko);
+//        lisaaSeina(3, 1, koko);
+//        lisaaSeina(8, 11, koko);
+//        lisaaSeina(7, 4, koko);
+//        lisaaSeina(5, 3, koko);
+//    }
+//
+//    private void level1L() {
+//        lisaaLaatikko(3, 2, koko);
+//        lisaaLaatikko(4, 1, koko);
+//        lisaaLaatikko(5, 6, koko);
+//        lisaaLaatikko(8, 10, koko);
+//        lisaaLaatikko(13, 12, koko);
+//        lisaaLaatikko(10, 9, koko);
+//    }
 
     private void level2L() {
 //        lisaaLaatikko(6, 1, koko);
