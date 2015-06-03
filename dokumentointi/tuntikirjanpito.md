@@ -10,3 +10,5 @@
 |27.5.2015|5h|Grafiikan parantelua|
 |31.5.2015|3h|Rakenteen parantelua|
 |1.6.2015|5h|Alku- ja loppuikkunoiden luonti sekä testien tekemistä|
+|2.6.2015|4h|Testien tekemistä|
+|3.6.2015|10h|JUnit testit loppuun, JavaDocin kirjoittaminen, luokkakaavion päivitys ja sekvenssikaavioiden piirtäminen|
