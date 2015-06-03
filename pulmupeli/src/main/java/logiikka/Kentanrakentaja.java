@@ -6,12 +6,21 @@ import elementit.Maali;
 import elementit.Seina;
 import java.util.ArrayList;
 
+/**
+ * Luokka, joka luo elementtejä kentälle
+ */
 public class Kentanrakentaja {
 
     private ArrayList<Elementti> kenttaelementit;
     private int koko;
     private Maali maali;
 
+    /**
+     * Luo kentänrakentajan joka tuntee listan pelin elementeistä ja pelin koon
+     *
+     * @param kelementit Lista, jossa säilytetään kenttäelementtejä
+     * @param koko Pelin koko
+     */
     public Kentanrakentaja(ArrayList<Elementti> kelementit, int koko) {
         this.kenttaelementit = kelementit;
         this.koko = koko;
@@ -21,6 +30,12 @@ public class Kentanrakentaja {
         return kenttaelementit;
     }
 
+    /**
+     * Metodi kutsuu osametodeja, jotka lisäävät elementtejä
+     * kenttaelementit-listaan
+     *
+     * @param koko Pelin koko
+     */
     public void luoKentta(int koko) {
         luoReunat(koko);
         lisaaKentalleSeinat();
@@ -28,6 +43,11 @@ public class Kentanrakentaja {
         lisaaMaali();
     }
 
+    /**
+     * Metodi lisää kenttäelementit-listaan seiniä, jotka rajaavat pelialueen
+     *
+     * @param koko Pelin koko
+     */
     public void luoReunat(int koko) {
         int maxraja = 15;
         for (int i = 0; i < maxraja; i++) {
@@ -41,19 +61,39 @@ public class Kentanrakentaja {
         }
     }
 
+    /**
+     * Metodi lisää seinän annettuun sijaintiin
+     *
+     * @param x Sijainnin x-koordinaatti
+     * @param y Sijainnin y-koordinaatti
+     * @param koko Pelin koko
+     */
     public void lisaaSeina(int x, int y, int koko) {
         kenttaelementit.add(new Seina(koko * x, koko * y, koko));
     }
 
+    /**
+     * Metodi lisää laatikon annettuun sijaintiin
+     *
+     * @param x Sijainnin x-koordinaatti
+     * @param y Sijainnin y-koordinaatti
+     * @param koko Pelin koko
+     */
     public void lisaaLaatikko(int x, int y, int koko) {
         kenttaelementit.add(new Laatikko(koko * x, koko * y, koko));
     }
 
+    /**
+     * Metodi kutsuu osametodia, joka lisää seiniä kenttaelementit-listalle
+     */
     public void lisaaKentalleSeinat() {
 //        level1S();
         level2S();
     }
-
+    
+    /**
+     * Metodi kutsuu osametodia, joka lisää laatikoita kenttaelementit-listalle
+     */
     public void lisaaKentalleLaatikot() {
 //        level1L();
         level2L();
@@ -75,8 +115,11 @@ public class Kentanrakentaja {
 //        lisaaLaatikko(13, 12, koko);
 //        lisaaLaatikko(10, 9, koko);
 //    }
-
-    private void level2L() {
+    
+    /**
+     * Metodi lisää kenttaelementit-listaan ennaltamääritellyt laatikot lisaaLaatikko-metodeilla
+     */
+    public void level2L() {
 //        lisaaLaatikko(6, 1, koko);
         lisaaLaatikko(10, 1, koko);
         lisaaLaatikko(10, 2, koko);
@@ -107,8 +150,11 @@ public class Kentanrakentaja {
         lisaaLaatikko(8, 11, koko);
         lisaaLaatikko(6, 12, koko);
     }
-
-    private void level2S() {
+    
+     /**
+     * Metodi lisää kenttaelementit-listaan ennaltamääritellyt seinät lisaaSeina-metodeilla
+     */
+    public void level2S() {
         lisaaSeina(1, 1, koko);
         lisaaSeina(13, 1, koko);
         lisaaSeina(1, 2, koko);
@@ -170,9 +216,12 @@ public class Kentanrakentaja {
         lisaaSeina(7, 13, koko);
         lisaaSeina(8, 13, koko);
     }
-
+    
+     /**
+     * Metodi lisää kenttaelementit-listaan maalin
+     */
     public void lisaaMaali() {
-       this.maali = new Maali(koko, 12*koko, koko);
+        this.maali = new Maali(koko, 12 * koko, koko);
         kenttaelementit.add(maali);
     }
 

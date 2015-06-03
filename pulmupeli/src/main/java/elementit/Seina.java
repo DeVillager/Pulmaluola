@@ -1,16 +1,12 @@
 package elementit;
-
-
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * Luokka määrittelee seinä-olion
+ */
 public class Seina extends JPanel implements Elementti {
 
     private int x;
@@ -18,7 +14,13 @@ public class Seina extends JPanel implements Elementti {
     private int koko;
      private String imgFileName = "images/wall.png";
     private Image img = luoKuva(imgFileName);
-
+    
+    /**
+     * Luo seinän, jolla on x- ja y-suuntaiset pituudet sekä koko
+     * @param x Seinän pituus x-suunnassa
+     * @param y Seinän pituus y-suunnassa
+     * @param koko Seinän koko
+     */
     public Seina(int x, int y, int koko) {
         this.x = x;
         this.y = y;
@@ -44,16 +46,25 @@ public class Seina extends JPanel implements Elementti {
     public int getKoko() {
         return koko;
     }
-
+    
     public String getId() {
         return "seina";
     }
-
+    
+    /**
+     * Metodi pyytää graphics oliota piirtämään seinään liittyvän kuvan img
+     * @param graphics Olio, joka piirtää kuvan
+     */
     public void piirra(Graphics graphics) {
         graphics.drawImage(img, x, y, this);
     }
     
-    private Image luoKuva(String imgFileName) {
+    /**
+     * Metodi hakee tiedoston tekstistä, joka kertoo pathin tiedostoon. Palauttaa tiedoston image-oliona.
+     * @param imgFileName Haettava kuvatiedosto
+     * @return kuva, joka liittyy seinä-olioon
+     */
+    public Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
         if (imgURL != null) {

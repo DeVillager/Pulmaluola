@@ -5,22 +5,30 @@
  */
 package gui;
 
-import logiikka.Liikekontrolleri;
 import elementit.Hahmo;
-import elementit.Maali;
-import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import logiikka.Liikekontrolleri;
 
+/**
+ * Luokka kuuntelee näppäimistöltä tulevia syötteitä ja toimii niiden mukaan.
+ */
 public class Nappaimistonkuuntelija implements KeyListener {
 
     private Hahmo hahmo;
     private Piirtoalusta component;
     private Liikekontrolleri tarkastaja;
-//    private Maali maali;
     private Peli peli;
 
+    /**
+     * Luo Nappaimistokuuntelija-olion, joka tuntee pelin, hahmon, piirtoalustan
+     * ja liikekontrollerin
+     *
+     * @param hahmo Pelaajan hahmo
+     * @param piirtoalusta Komponentti, joka suorittaa elementtien piirtämiset
+     * @param tarkastaja Olio, joka tarkastaa onko liike sallittu
+     * @param peli Olio, joka suorittaa pelin tapahtumia
+     */
     public Nappaimistonkuuntelija(Hahmo hahmo, Piirtoalusta piirtoalusta, Liikekontrolleri tarkastaja, Peli peli) {
         this.hahmo = hahmo;
         this.component = piirtoalusta;
@@ -28,6 +36,12 @@ public class Nappaimistonkuuntelija implements KeyListener {
         this.peli = peli;
     }
 
+    /**
+     * Metodi pyytää liikekontrolleria tarkastamaan liikkeen, jonka jälkeen voi
+     * pyytää hahmoa siirtymään. Tarkastaa myös onko hahmo jo maalissa.
+     *
+     * @param e Näppäimistöltä painetun napin tapahtuma
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         System.out.println(e.getKeyCode());
@@ -43,8 +57,8 @@ public class Nappaimistonkuuntelija implements KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_R) {
                 this.peli.getLista().clear();
                 peli.getRakentaja().luoKentta(hahmo.getKoko());
-                hahmo.setX(7*hahmo.getKoko());
-                hahmo.setY(4*hahmo.getKoko());             
+                hahmo.setX(7 * hahmo.getKoko());
+                hahmo.setY(4 * hahmo.getKoko());
             }
         }
         component.repaint();

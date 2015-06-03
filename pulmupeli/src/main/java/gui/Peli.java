@@ -23,7 +23,11 @@ public class Peli {
     private Maali maali;
     private JFrame valikko;
     private IkkunanPiirtaja ip;
-
+    
+    /**
+     * Luo Peli-olion, jolla on skaala. Luo attribuuteiksi hahmon, maalin, kenttalistan, kentanrakentajan ja ikkunanpiirtäjän.
+     * @param koko Pelin yhden ruudun koko pikseleinä
+     */
     public Peli(int koko) {
         this.skaala = koko;
         this.hahmo = new Hahmo(7 * koko, 4 * koko, koko);
@@ -32,15 +36,25 @@ public class Peli {
         this.rakentaja = new Kentanrakentaja(kenttalista, koko);
         this.ip = new IkkunanPiirtaja(this, skaala);
     }
-
+    
+    /**
+     * Käynnistää pelin ja kutsuu ikkunanpiirtajan kaynnistaValikko()-metodia
+     */
     public void kaynnista() {
         this.ip.kaynnistaValikko();
     }
-
+    
+    /**
+     * Kutsuu kentanrakentajan luoKentta oliota, jossa on parametrina skaala
+     */
     public void luoKentalleKaikkiKomponentit() {
         rakentaja.luoKentta(skaala);
     }
-
+    
+    /**
+     * Luo pelin grafiikoiden piirtamiseen vaadittavat oliot, jotka piirtävät pelin grafiikat.
+     * @param container Sisältää JFramen komponentteja
+     */
     public void luoGrafiikat(Container container) {
         Piirtoalusta piirtoalusta = new Piirtoalusta(hahmo, maali, kenttalista);
         Liikekontrolleri tarkastaja = new Liikekontrolleri(hahmo, maali, kenttalista);

@@ -5,6 +5,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * Luokka määrittelee laatikko-olion
+ */
 public class Laatikko extends JPanel implements Elementti {
 
     private int x;
@@ -14,6 +17,13 @@ public class Laatikko extends JPanel implements Elementti {
     private String imgFileName = "images/rock.png";
     private Image img = luoKuva(imgFileName);
 
+    /**
+     * Luo laatikon, jolla on x- ja y-suuntaiset pituudet sekä koko
+     *
+     * @param x laatikon pituus x-suunnassa
+     * @param y laatikon pituus y-suunnassa
+     * @param koko laatikon koko
+     */
     public Laatikko(int x, int y, int koko) {
         this.x = x;
         this.y = y;
@@ -44,15 +54,27 @@ public class Laatikko extends JPanel implements Elementti {
     public String getId() {
         return id;
     }
-    
+
     public void setId(String uusiId) {
         this.id = uusiId;
     }
 
+    /**
+     * Metodi pyytää graphics oliota piirtämään seinään liittyvän kuvan img
+     *
+     * @param graphics Olio, joka piirtää kuvan
+     */
     public void piirra(Graphics graphics) {
         graphics.drawImage(img, x, y, null);
     }
-    
+
+    /**
+     * Metodi hakee tiedoston tekstistä, joka kertoo pathin tiedostoon.
+     * Palauttaa tiedoston image-oliona.
+     *
+     * @param imgFileName Haettava kuvatiedosto
+     * @return kuva, joka liittyy laatikko-olioon
+     */
     private Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);

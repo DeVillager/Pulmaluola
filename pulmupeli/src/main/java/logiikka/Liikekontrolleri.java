@@ -6,18 +6,34 @@ import elementit.Hahmo;
 import elementit.Maali;
 import java.util.ArrayList;
 
+/**
+ * Luokka tarkistaa voiko hahmoa siirtää annettuun suuntaan
+ */
 public class Liikekontrolleri {
 
     private Hahmo hahmo;
     private ArrayList<Elementti> kenttaelementit;
     private Maali maali;
 
+    /**
+     * Luo liikekontrollerin, joka tuntee hahmon, maalin sekä kenttäelementit
+     *
+     * @param hahmo Pelaajan hahmo
+     * @param maali Ruutu, johon hahmo pitää saada
+     * @param kelementit Lista kentällä olevista elementeistä
+     */
     public Liikekontrolleri(Hahmo hahmo, Maali maali, ArrayList<Elementti> kelementit) {
         this.hahmo = hahmo;
         this.kenttaelementit = kelementit;
         this.maali = maali;
     }
 
+    /**
+     * Tarkastaa liikkeen näppäimistöltä annetun syötteen perusteella
+     *
+     * @param keyCode Painettuun näppäimeen liittyvä numerokoodi
+     * @return true, jos liike on mahdollinen; muuten false
+     */
     public boolean tarkastaLiike(int keyCode) {
         if (keyCode == 37 || keyCode == 38 || keyCode == 39 || keyCode == 40) {
             return tarkastaEihanTormaa(keyCode);
@@ -28,6 +44,13 @@ public class Liikekontrolleri {
         return false;
     }
 
+    /**
+     * Tarkastaa törmääkö hahmo jos se siirtyisi. Jos vieressä on laatikko,
+     * jonka takana on tyhjä ruutu, hahmo siirtyy ja työntää laatikkoa.
+     *
+     * @param keyCode Painettuun näppäimeen liittyvä numerokoodi
+     * @return true, jos hahmo ei törmää tai liike on sallittu; muuten false
+     */
     boolean tarkastaEihanTormaa(int keyCode) {
         int x = hahmo.getX();
         int y = hahmo.getY();

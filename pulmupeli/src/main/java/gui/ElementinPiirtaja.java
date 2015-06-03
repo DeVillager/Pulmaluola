@@ -1,8 +1,2 @@
 
-//package gui;
-//
-//public class ElementinPiirtaja {
-//    
-//    public 
-//    
-//}
+//  tulee ehkä myöhemmin

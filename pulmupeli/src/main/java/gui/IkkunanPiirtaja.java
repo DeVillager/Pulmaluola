@@ -9,18 +9,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+/**
+ * Luokka luo JFrame-olioita erilaisiin tilanteisiin
+ */
 public class IkkunanPiirtaja {
 
     private Peli peli;
     private int skaala;
     private JFrame valikko;
     private JFrame pelinFrame;
-
+    
+    /**
+     * Luo ikkunanpiirtäjän, joka tuntee pelin sekä skaalan.
+     * @param peli
+     * @param skaala 
+     */
     public IkkunanPiirtaja(Peli peli, int skaala) {
         this.peli = peli;
         this.skaala = skaala;
     }
-
+    
+    /**
+     * Metodi luo Valikko-ikkunan
+     */
     public void kaynnistaValikko() {
         valikko = new JFrame("Valikko");
         valikko.setPreferredSize(new Dimension(10 * skaala, 15 * skaala));
@@ -30,7 +41,11 @@ public class IkkunanPiirtaja {
         valikko.pack();
         valikko.setVisible(true);
     }
-
+    
+    /**
+     * Metodi luo kaksi JButtonia JFramen säiliöön
+     * @param container annettu JFramen säiliö
+     */
     public void luoValikkoKomponentit(Container container) {
         container.setLayout(new GridLayout(2, 1));
         JButton aloitaPeli = new JButton("Aloita peli");
@@ -42,11 +57,14 @@ public class IkkunanPiirtaja {
         container.add(aloitaPeli);
         container.add(lopetaPeli);
     }
-
+    
     public JFrame getValikonFrame() {
         return this.valikko;
     }
-
+    
+    /**
+     * Metodi luo Peli-ikkunan
+     */
     public void luoPeliIkkuna() {
         pelinFrame = new JFrame("Peli");
         pelinFrame = new JFrame("Pulmapeli");
@@ -62,7 +80,10 @@ public class IkkunanPiirtaja {
     public JFrame getPelinFrame() {
         return this.pelinFrame;
     }
-
+    
+    /**
+     * Metodi luo Voitto-ikkunan
+     */
     public void luoVoittoIkkuna() {
         JFrame voittoIkkuna = new JFrame("Taso läpäisty");
         voittoIkkuna.setPreferredSize(new Dimension(616, 638));

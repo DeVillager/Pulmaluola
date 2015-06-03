@@ -5,7 +5,6 @@
  */
 package elementit;
 
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -13,6 +12,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * Luokka määrittelee maali-olion
+ */
 public class Maali extends JPanel implements Elementti {
 
     private int x;
@@ -21,6 +23,13 @@ public class Maali extends JPanel implements Elementti {
     private String imgFileName = "images/goal.png";
     private Image img = luoKuva(imgFileName);
 
+    /**
+     * Luo maalin, jolla on x- ja y-suuntaiset pituudet sekä koko
+     *
+     * @param x maalin pituus x-suunnassa
+     * @param y maalin pituus y-suunnassa
+     * @param koko maalin koko
+     */
     public Maali(int x, int y, int koko) {
         this.x = x;
         this.y = y;
@@ -51,11 +60,23 @@ public class Maali extends JPanel implements Elementti {
         return "maali";
     }
 
+    /**
+     * Metodi pyytää graphics oliota piirtämään seinään liittyvän kuvan img
+     *
+     * @param graphics Olio, joka piirtää kuvan
+     */
     public void piirra(Graphics graphics) {
-            graphics.drawImage(img, x, y, null);
+        graphics.drawImage(img, x, y, null);
     }
-    
-     private Image luoKuva(String imgFileName) {
+
+    /**
+     * Metodi hakee tiedoston tekstistä, joka kertoo pathin tiedostoon.
+     * Palauttaa tiedoston image-oliona.
+     *
+     * @param imgFileName Haettava kuvatiedosto
+     * @return kuva, joka liittyy maali-olioon
+     */
+    private Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
         if (imgURL != null) {
