@@ -20,7 +20,7 @@ public class Maali extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-    private String imgFileName = "images/goal.png";
+    private String imgFileName = "goal.png";
     private Image img = luoKuva(imgFileName);
 
     /**

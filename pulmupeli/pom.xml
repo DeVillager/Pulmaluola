@@ -27,6 +27,11 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/images</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

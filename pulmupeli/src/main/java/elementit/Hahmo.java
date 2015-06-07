@@ -13,7 +13,7 @@ public class Hahmo extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-    private String imgFileName = "images/slimeb.png";
+    private String imgFileName = "slimeb.png";
     private Image img = luoKuva(imgFileName);
 
     /**
