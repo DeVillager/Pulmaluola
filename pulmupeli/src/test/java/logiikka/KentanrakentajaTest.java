@@ -109,7 +109,7 @@ public class KentanrakentajaTest {
         kr2.luoReunat(koko);
         kr2.lisaaKentalleLaatikot();
         kr2.lisaaKentalleSeinat();
-        kr2.lisaaMaali();
+        kr2.lisaaMaali(1, 2, 3);
         assertEquals(kenttaelementit.size(), kr2.getLista().size());
     }
 
@@ -153,7 +153,7 @@ public class KentanrakentajaTest {
 
     @Test
     public void lisaaMaaliToimii() {
-        kr.lisaaMaali();
+        kr.lisaaMaali(1, 2, 3);
         boolean totuus = false;
         for (Elementti elem : kenttaelementit) {
             if (elem.getId() == "maali" && elem.getX() == koko && elem.getY() == 12 * koko && elem.getKoko() == koko) {

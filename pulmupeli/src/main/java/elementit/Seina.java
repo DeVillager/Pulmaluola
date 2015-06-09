@@ -12,7 +12,7 @@ public class Seina extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-     private String imgFileName = "wall.png";
+     private String imgFileName = "omaseina2.png";
     private Image img = luoKuva(imgFileName);
     
     /**

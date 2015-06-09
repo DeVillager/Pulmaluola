@@ -5,6 +5,7 @@
  */
 package gui;
 
+import elementit.Elementti;
 import elementit.Hahmo;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -57,15 +58,35 @@ public class Nappaimistonkuuntelija implements KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_R) {
                 this.peli.getLista().clear();
                 peli.getRakentaja().luoKentta(hahmo.getKoko());
-                hahmo.setX(7 * hahmo.getKoko());
-                hahmo.setY(4 * hahmo.getKoko());
+                hahmo.setX(peli.getRakentaja().getHahmonXSijaintiTasossa());
+                hahmo.setY(peli.getRakentaja().getHahmonYSijaintiTasossa());
             }
         }
+
         component.repaint();
-        if (hahmo.getX() == this.peli.getMaali().getX() && hahmo.getY() == this.peli.getMaali().getY()) {
-            System.out.println("VOITIT!");
-            this.peli.getIkkunanPiirtaja().getPelinFrame().dispose();
-            peli.getIkkunanPiirtaja().luoVoittoIkkuna();
+        if (hahmo.getX() == this.peli.getRakentaja().getMaali().getX() && hahmo.getY() == this.peli.getRakentaja().getMaali().getY()) {
+            peli.getRakentaja().nostaTasoa();
+            if (peli.getRakentaja().getLevel() == 3) {
+                this.peli.getIkkunanPiirtaja().getPelinFrame().dispose();
+                peli.getIkkunanPiirtaja().luoVoittoIkkuna();
+            }
+            hahmo.setX(this.peli.getRakentaja().getMaali().getX());
+            hahmo.setY(this.peli.getRakentaja().getMaali().getY());
+            this.peli.getRakentaja().getLista().clear();
+//            this.peli.getPA().setMaali(peli.getRakentaja().getMaali());
+            peli.getRakentaja().luoKentta(hahmo.getKoko());
+            this.peli.getPA().setMaali(peli.getRakentaja().getMaali());
+            return;
+        }
+
+        for (Elementti elem : peli.getLista()) {
+            if ("rotko".equals(elem.getId()) && elem.getX() == hahmo.getX() && elem.getY() == hahmo.getY()) {
+                this.peli.getLista().clear();
+                peli.getRakentaja().luoKentta(hahmo.getKoko());
+                hahmo.setX(peli.getRakentaja().getHahmonXSijaintiTasossa());
+                hahmo.setY(peli.getRakentaja().getHahmonYSijaintiTasossa());
+                return;
+            }
         }
     }
 

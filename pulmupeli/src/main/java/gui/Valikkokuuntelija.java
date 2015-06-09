@@ -10,21 +10,25 @@ import javax.swing.JButton;
 public class Valikkokuuntelija implements ActionListener {
 
     private IkkunanPiirtaja ip;
-    private final JButton aloitusNappi;
-    private final JButton lopetusNappi;
+    private JButton aloitusNappi;
+    private JButton lopetusNappi;
+    private JButton ohjeet;
+//    private JButton ok;
     
     /**
      * Luo Valikkokuuntelija-olion, joka saa parametreinään Ikkunanpiirtajan, ja kaksi JButtonia
      * @param ip Pelin ikkunanpiirtaja, joka luo JFrame-olioita
      * @param aloitusNappi Ikkunanpiirtajan luoman JFramen "Valikko" sisältämä JButton
      * @param lopetusNappi Ikkunanpiirtajan luoman JFramen "Valikko" sisältämä JButton
+     * @param ohjeet
      */
-    public Valikkokuuntelija(IkkunanPiirtaja ip, JButton aloitusNappi, JButton lopetusNappi) {
+    public Valikkokuuntelija(IkkunanPiirtaja ip, JButton aloitusNappi, JButton lopetusNappi, JButton ohjeet) {
         this.ip = ip;
         this.aloitusNappi = aloitusNappi;
         this.lopetusNappi = lopetusNappi;
+        this.ohjeet = ohjeet;
     }
-    
+
     /**
      * Avaa peli-ikkunan, jos pelaaja painoi aloitusNappia. Sulkee ohjelman, jos pelaaja painoi lopetusNappia.
      * @param e Painalluksen tapahtuma
@@ -38,6 +42,10 @@ public class Valikkokuuntelija implements ActionListener {
         if (e.getSource() == lopetusNappi) {
             ip.getValikonFrame().dispose();
         }
+        if (e.getSource() == ohjeet) {
+            ip.luoOhjeIkkuna();
+        }
+        
     }
 
 }

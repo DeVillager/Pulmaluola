@@ -23,6 +23,8 @@ public class Peli {
     private Maali maali;
     private JFrame valikko;
     private IkkunanPiirtaja ip;
+    private Piirtoalusta pa;
+//    private Soitin soitin;
     
     /**
      * Luo Peli-olion, jolla on skaala. Luo attribuuteiksi hahmon, maalin, kenttalistan, kentanrakentajan ja ikkunanpiirtäjän.
@@ -30,17 +32,22 @@ public class Peli {
      */
     public Peli(int koko) {
         this.skaala = koko;
-        this.hahmo = new Hahmo(7 * koko, 4 * koko, koko);
-        this.maali = new Maali(koko, 12 * koko, koko);
+        this.hahmo = new Hahmo(0, 0, koko);
+//        this.maali = new Maali(koko, 12 * koko, koko);
         this.kenttalista = new ArrayList<Elementti>();
         this.rakentaja = new Kentanrakentaja(kenttalista, koko);
+        this.hahmo.setX(rakentaja.getHahmonXSijaintiTasossa());
+        this.hahmo.setY(rakentaja.getHahmonYSijaintiTasossa());
+        
         this.ip = new IkkunanPiirtaja(this, skaala);
+//        soitin.
     }
     
     /**
      * Käynnistää pelin ja kutsuu ikkunanpiirtajan kaynnistaValikko()-metodia
      */
     public void kaynnista() {
+        
         this.ip.kaynnistaValikko();
     }
     
@@ -56,10 +63,10 @@ public class Peli {
      * @param container Sisältää JFramen komponentteja
      */
     public void luoGrafiikat(Container container) {
-        Piirtoalusta piirtoalusta = new Piirtoalusta(hahmo, maali, kenttalista);
-        Liikekontrolleri tarkastaja = new Liikekontrolleri(hahmo, maali, kenttalista);
-        container.add(piirtoalusta);
-        this.ip.getPelinFrame().addKeyListener(new Nappaimistonkuuntelija(hahmo, piirtoalusta, tarkastaja, this));
+        this.pa = new Piirtoalusta(hahmo, rakentaja.getMaali(), kenttalista);
+        Liikekontrolleri tarkastaja = new Liikekontrolleri(hahmo, rakentaja.getMaali(), kenttalista);
+        container.add(pa);
+        this.ip.getPelinFrame().addKeyListener(new Nappaimistonkuuntelija(hahmo, pa, tarkastaja, this));
     }
 
     public IkkunanPiirtaja getIkkunanPiirtaja() {
@@ -76,6 +83,10 @@ public class Peli {
 
     public Maali getMaali() {
         return this.maali;
+    }
+    
+    public Piirtoalusta getPA() {
+        return this.pa;
     }
 
 }

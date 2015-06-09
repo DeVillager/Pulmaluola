@@ -14,7 +14,7 @@ public class Laatikko extends JPanel implements Elementti {
     private int y;
     private int koko;
     private String id;
-    private String imgFileName = "rock.png";
+    private String imgFileName = "omakivi2.png";
     private Image img = luoKuva(imgFileName);
 
     /**

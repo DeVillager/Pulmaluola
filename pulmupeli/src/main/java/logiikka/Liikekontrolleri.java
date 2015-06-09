@@ -4,6 +4,8 @@ import elementit.Elementti;
 import elementit.Seina;
 import elementit.Hahmo;
 import elementit.Maali;
+import elementit.Rotko;
+import elementit.TaytettyRotko;
 import java.util.ArrayList;
 
 /**
@@ -89,14 +91,29 @@ public class Liikekontrolleri {
                     }
                     for (Elementti elem2 : kenttaelementit) {
                         if (elem2.getX() == x2 && elem2.getY() == y2) {
-                            return false;
+                            if ("taysirotko".equals(elem2.getId())) {
+                                continue;
+                            } else if (!"rotko".equals(elem2.getId())) {
+                                return false;
+                            } else {
+                                kenttaelementit.remove(elem);
+                                TaytettyRotko uusirotko = new TaytettyRotko(elem2.getX(), elem2.getY(), hahmo.getKoko());
+//                                uusirotko.tayta();
+                                kenttaelementit.remove(elem2);
+                                kenttaelementit.add(uusirotko);
+                                return true;
+                            }
                         }
                     }
                     elem.setX(x2);
                     elem.setY(y2);
                     return true;
+//                } else if {
+//                    
+
                 }
             }
+
         }
         return true;
     }
