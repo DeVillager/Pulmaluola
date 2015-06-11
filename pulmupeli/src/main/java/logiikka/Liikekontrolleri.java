@@ -1,12 +1,11 @@
 package logiikka;
 
 import elementit.Elementti;
-import elementit.Seina;
 import elementit.Hahmo;
 import elementit.Maali;
-import elementit.Rotko;
-import elementit.TaytettyRotko;
+import gui.Peli;
 import java.util.ArrayList;
+import javafx.scene.input.KeyCode;
 
 /**
  * Luokka tarkistaa voiko hahmoa siirtää annettuun suuntaan
@@ -28,6 +27,34 @@ public class Liikekontrolleri {
         this.hahmo = hahmo;
         this.kenttaelementit = kelementit;
         this.maali = maali;
+    }
+
+    /**
+     * Metodi tarkastaa onko hahmo samassa koordinaatissa kuin maali.
+     *
+     * @param peli Kaynnissa oleva peli
+     * @return true, jos hahmo pääsi maaliin; muuten false
+     */
+    public boolean tarkastaOnkoMaalissa(Peli peli) {
+        if (hahmo.getX() == peli.getRakentaja().getMaali().getX() && hahmo.getY() == peli.getRakentaja().getMaali().getY()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Metodi tarkastaa onko hahmo samassa koordinaatissa kuin joku rotko, joka
+     * ei ole taysi
+     *
+     * @return true, jos hahmo on tyhjan rotkon päällä
+     */
+    public boolean tarkastaPutoaakoRotkoon() {
+        for (Elementti elem : kenttaelementit) {
+            if ("rotko".equals(elem.getId()) && elem.getX() == hahmo.getX() && elem.getY() == hahmo.getY()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -54,9 +81,17 @@ public class Liikekontrolleri {
      * @return true, jos hahmo ei törmää tai liike on sallittu; muuten false
      */
     boolean tarkastaEihanTormaa(int keyCode) {
+
+        /**
+         * Luodaan tarkastelua varten tarkastelukoordinaatit
+         */
         int x = hahmo.getX();
         int y = hahmo.getY();
 
+        /**
+         * Jos näppäin on jokin suuntanäppäimistä, niin tarkastelukoordinaatiksi
+         * tulee ruutu, johon hahmo olisi siirtymässä
+         */
         if (keyCode == 37) {
             x -= hahmo.getKoko();
         }
@@ -69,57 +104,94 @@ public class Liikekontrolleri {
         if (keyCode == 40) {
             y += hahmo.getKoko();
         }
-        for (Elementti elem : kenttaelementit) {        // siistitään myöhemmin tarkastaEihanTormaa-kutsuvaksi metodiksi
-            if (elem.getX() == x && elem.getY() == y) { // tarkastellaan onko edes elementtiä edessä
-                String id = elem.getId();   // jos on niin katsotaan mikä elementti
-                if ("seina".equals(id)) {
-                    return false;
-                } else if ("laatikko".equals(id)) {
-                    int x2 = elem.getX();
-                    int y2 = elem.getY();
-                    if (keyCode == 37) {
-                        x2 -= hahmo.getKoko();
-                    }
-                    if (keyCode == 39) {
-                        x2 += hahmo.getKoko();
-                    }
-                    if (keyCode == 38) {
-                        y2 -= hahmo.getKoko();
-                    }
-                    if (keyCode == 40) {
-                        y2 += hahmo.getKoko();
-                    }
-                    for (Elementti elem2 : kenttaelementit) {
-                        if (elem2.getX() == x2 && elem2.getY() == y2) {
-                            if ("taysirotko".equals(elem2.getId())) {
-                                continue;
-                            } else if (!"rotko".equals(elem2.getId())) {
-                                return false;
-                            } else {
-                                kenttaelementit.remove(elem);
-                                TaytettyRotko uusirotko = new TaytettyRotko(elem2.getX(), elem2.getY(), hahmo.getKoko());
-//                                uusirotko.tayta();
-                                kenttaelementit.remove(elem2);
-                                kenttaelementit.add(uusirotko);
-                                return true;
-                            }
-                        }
-                    }
-                    elem.setX(x2);
-                    elem.setY(y2);
-                    return true;
-//                } else if {
-//                    
-
-                }
-            }
-
+        if (!tarkastaOnkoEdessaElementtia(x, y, keyCode)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public ArrayList<Elementti> getKenttaobjektit() {
         return kenttaelementit;
     }
 
+    /**
+     * Jos tarkastelukoordinaatissa on jokin elementti niin siirrytään
+     * seuraavaan vaiheeseen
+     */
+    private boolean tarkastaOnkoEdessaElementtia(int x, int y, int keycode) {
+        for (Elementti elem : kenttaelementit) {        // siistitään myöhemmin tarkastaEihanTormaa-kutsuvaksi metodiksi
+            if (elem.getX() == x && elem.getY() == y) { // tarkastellaan onko edes elementtiä edessä
+                boolean totuus = suoritaTarkasteluElementille(elem, keycode);
+                return totuus;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Metodi suorittaa tarkastelun hahmon liikkeelle, mikä riippuu elementistä.
+     *
+     * @param elem tarkasteltava elementti hahmon liikkeen suunnassa
+     * @param keyCode hahmolle syötetyn suunnan numeroarvo
+     * @return false, jos liike on validi
+     */
+    private boolean suoritaTarkasteluElementille(Elementti elem, int keyCode) {
+        String id = elem.getId();
+        if ("seina".equals(id)) {
+            return true;
+        } else if ("laatikko".equals(id)) {
+
+            /**
+             * Määritellään nyt uusi tarkastelukoordinaatti
+             */
+            int x = elem.getX();
+            int y = elem.getY();
+
+            /**
+             * Tarkastellaan hahmolle annetun liikkeen suunta ja asetetaan
+             * tarkastelukoordinaatti laatikon viereen kyseiseen suuntaan
+             */
+            if (keyCode == 37) {
+                x -= hahmo.getKoko();
+            }
+            if (keyCode == 39) {
+                x += hahmo.getKoko();
+            }
+            if (keyCode == 38) {
+                y -= hahmo.getKoko();
+            }
+            if (keyCode == 40) {
+                y += hahmo.getKoko();
+            }
+
+            /**
+             * Tarkastellaan nyt kyseisessa suunnassa olevaa elementtiä. Jos sen
+             * identiteetti on taysirotko, niin liike onnistuu. Jos taas sen
+             * identiteetti on mikä tahansa muu kuin rotko tai taysirotko, niin
+             * liike epäonnistuu. Jos ei kumpikaan aiemmista, niin sen
+             * identiteetti on rotko, jolloin muutetaan elementin identiteetti
+             * taysirotkoksi, annetaan sille uusi kuva, poistetaan laatikko-olio
+             * kentaelementeista ja liike onnistuu.
+             */
+            for (Elementti elem2 : kenttaelementit) {
+                if (elem2.getX() == x && elem2.getY() == y) {
+                    if ("taysirotko".equals(elem2.getId())) {
+                        continue;
+                    }
+                    if (!"rotko".equals(elem2.getId())) {
+                        return true;
+                    } else {
+                        elem2.setId("taysirotko");
+                        elem2.setImage("omataysirotko.png");
+                        kenttaelementit.remove(elem);
+                        return false;
+                    }
+                }
+            }
+            elem.setX(x);
+            elem.setY(y);
+            return false;
+        }
+        return false;
+    }
 }

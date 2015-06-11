@@ -1,4 +1,3 @@
-
 package elementit;
 
 import java.awt.Graphics;
@@ -15,7 +14,7 @@ public class Rotko extends JPanel implements Elementti {
     private int y;
     private int koko;
     private String id;
-    private String imgFileName = "omarotko2.png";
+    private String imgFileName = "omarotko.png";
     private boolean tyhja;
     private Image img = luoKuva(imgFileName);
 
@@ -34,39 +33,6 @@ public class Rotko extends JPanel implements Elementti {
         this.tyhja = true;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getKoko() {
-        return koko;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String uusiId) {
-        this.id = uusiId;
-    }
-    
-    public void tayta() {
-        this.tyhja = false;
-        imgFileName = "omahahmo.png";
-    }
-
     /**
      * Metodi pyytää graphics oliota piirtämään seinään liittyvän kuvan img
      *
@@ -83,7 +49,7 @@ public class Rotko extends JPanel implements Elementti {
      * @param imgFileName Haettava kuvatiedosto
      * @return kuva, joka liittyy rotko-olioon
      */
-    private Image luoKuva(String imgFileName) {
+    public Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
         if (imgURL != null) {
@@ -93,6 +59,45 @@ public class Rotko extends JPanel implements Elementti {
         }
         Image img = icon.getImage();
         return img;
+    }
+    
+    // Tästä eteenpäin loput metodit ovat gettereitä ja settereitä
+    
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getKoko() {
+        return koko;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getImage() {
+        return imgFileName;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setId(String uusiId) {
+        this.id = uusiId;
+    }
+
+    public void setImage(String uusikuva) {
+        this.imgFileName = uusikuva;
+        img = luoKuva(imgFileName);
     }
 
 }

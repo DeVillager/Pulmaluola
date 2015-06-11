@@ -31,34 +31,6 @@ public class Laatikko extends JPanel implements Elementti {
         this.id = "laatikko";
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getKoko() {
-        return koko;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String uusiId) {
-        this.id = uusiId;
-    }
-
     /**
      * Metodi pyytää graphics oliota piirtämään seinään liittyvän kuvan img
      *
@@ -75,7 +47,7 @@ public class Laatikko extends JPanel implements Elementti {
      * @param imgFileName Haettava kuvatiedosto
      * @return kuva, joka liittyy laatikko-olioon
      */
-    private Image luoKuva(String imgFileName) {
+    public Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
         if (imgURL != null) {
@@ -85,6 +57,44 @@ public class Laatikko extends JPanel implements Elementti {
         }
         Image img = icon.getImage();
         return img;
+    }
+    
+    // Tästä eteenpäin loput metodit ovat gettereitä ja settereitä
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getKoko() {
+        return koko;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getImage() {
+        return imgFileName;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setId(String uusiId) {
+        this.id = uusiId;
+    }
+
+    public void setImage(String uusikuva) {
+        this.imgFileName = uusikuva;
     }
 
 }

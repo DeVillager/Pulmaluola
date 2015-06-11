@@ -22,6 +22,7 @@ public class Maali extends JPanel implements Elementti {
     private int koko;
     private String imgFileName = "omatportaat2.png";
     private Image img = luoKuva(imgFileName);
+    private String id;
 
     /**
      * Luo maalin, jolla on x- ja y-suuntaiset pituudet sekä koko
@@ -34,30 +35,7 @@ public class Maali extends JPanel implements Elementti {
         this.x = x;
         this.y = y;
         this.koko = koko;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getKoko() {
-        return koko;
-    }
-
-    public String getId() {
-        return "maali";
+        this.id = "maali";
     }
 
     /**
@@ -76,7 +54,7 @@ public class Maali extends JPanel implements Elementti {
      * @param imgFileName Haettava kuvatiedosto
      * @return kuva, joka liittyy maali-olioon
      */
-    private Image luoKuva(String imgFileName) {
+    public Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
         if (imgURL != null) {
@@ -87,4 +65,45 @@ public class Maali extends JPanel implements Elementti {
         Image img = icon.getImage();
         return img;
     }
+
+    // Tästä eteenpäin loput metodit ovat gettereitä ja settereitä
+    
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getKoko() {
+        return koko;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String getImage() {
+        return imgFileName;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setId(String uusiId) {
+        this.id = uusiId;
+    }
+
+    @Override
+    public void setImage(String uusikuva) {
+        this.imgFileName = uusikuva;
+    }
+
 }

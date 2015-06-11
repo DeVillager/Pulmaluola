@@ -46,5 +46,16 @@ public class MaaliTest {
         assertEquals(maali.getId(), "maali");
     }
 
+    @Test
+    public void setIdToimii() {
+        maali.setId("uusiId");
+        assertEquals(maali.getId(), "uusiId");
+    }
+
+    @Test
+    public void setImageToimii() {
+        maali.setImage("uusiKuva");
+        assertEquals(maali.getImage(), "uusiKuva");
+    }
 
 }

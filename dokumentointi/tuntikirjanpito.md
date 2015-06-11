@@ -12,3 +12,7 @@
 |1.6.2015|5h|Alku- ja loppuikkunoiden luonti sekä testien tekemistä|
 |2.6.2015|4h|Testien tekemistä|
 |3.6.2015|10h|JUnit testit loppuun, JavaDocin kirjoittaminen, luokkakaavion päivitys ja sekvenssikaavioiden piirtäminen|
+|7.6.2015|7h|Rotko-elementin luonti, koodin parantaminen|
+|9.6.2015|5h|Omien grafiikoiden piirtäminen ja asettaminen|
+|10.6.2015|3h|JUnit testien päivittämistä, koodin rakenteen parantelemista|
+|11.6.2015|9h|Grafiikoiden monipuolistamista, koodin sieventämistä Clean Coden mukaiseksi ja JUnit-testien lisäykset loppuun. Javadocin, luokkakaavion sekä sekvenssikaavioiden päivittäminen|

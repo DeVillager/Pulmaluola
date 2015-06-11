@@ -13,11 +13,12 @@ public class Hahmo extends JPanel implements Elementti {
     private int x;
     private int y;
     private int koko;
-    private String imgFileName = "omahahmo4.png";
+    private String id;
+    private String imgFileName = "omahahmoD.png";
     private Image img = luoKuva(imgFileName);
 
     /**
-     * Luo hahmon, jolla on x- ja y-suuntaiset pituudet sekä koko
+     * Luo hahmon, jolla on x- ja y-suuntaiset pituudet, koko ja identiteetti.
      *
      * @param x hahmon pituus x-suunnassa
      * @param y hahmon pituus y-suunnassa
@@ -27,34 +28,12 @@ public class Hahmo extends JPanel implements Elementti {
         this.x = x;
         this.y = y;
         this.koko = koko;
+        this.id = "hahmo";
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getKoko() {
-        return koko;
-    }
-
-    public String getId() {
-        return "hahmo";
-    }
-    
     /**
      * Metodi siirtää hahmon koordinaatteja
+     *
      * @param xmuutos siirron x-suuntainen muutos
      * @param ymuutos siirron y-suuntainen muutos
      */
@@ -79,7 +58,7 @@ public class Hahmo extends JPanel implements Elementti {
      * @param imgFileName Haettava kuvatiedosto
      * @return kuva, joka liittyy hahmo-olioon
      */
-    private Image luoKuva(String imgFileName) {
+    public Image luoKuva(String imgFileName) {
         ImageIcon icon = null;
         java.net.URL imgURL = getClass().getClassLoader().getResource(imgFileName);
         if (imgURL != null) {
@@ -90,4 +69,67 @@ public class Hahmo extends JPanel implements Elementti {
         Image img = icon.getImage();
         return img;
     }
+
+    /**
+     *Metodi asettaa hahmolle uuden kuvan kun painetaan jotakin suuntanäppäintä.
+     * @param keyCode näppäimistöltä painetun näppäimen numerokoodi
+     */
+    public void asetaUusikuva(int keyCode) {
+
+        if (keyCode == 37) {
+            this.setImage("omahahmoL.png");
+            this.img = luoKuva(this.getImage());
+        } else if (keyCode == 39) {
+            this.setImage("omahahmoR.png");
+            this.img = luoKuva(this.getImage());
+        } else if (keyCode == 38) {
+            this.setImage("omahahmoU.png");
+            this.img = luoKuva(this.getImage());
+        } else if (keyCode == 40) {
+            this.setImage("omahahmoD.png");
+            this.img = luoKuva(this.getImage());
+        } else if (keyCode == 82) {
+            this.setImage("omahahmoD.png");
+            this.img = luoKuva(this.getImage());
+        }
+    }
+    
+     // Tästä eteenpäin loput metodit ovat gettereitä ja settereitä
+    
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getKoko() {
+        return koko;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getImage() {
+        return imgFileName;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setId(String uusiId) {
+        this.id = uusiId;
+    }
+
+    public void setImage(String uusikuva) {
+        this.imgFileName = uusikuva;
+    }
+
 }

@@ -4,7 +4,9 @@ import elementit.Elementti;
 import elementit.Hahmo;
 import elementit.Laatikko;
 import elementit.Maali;
+import elementit.Rotko;
 import elementit.Seina;
+import gui.Peli;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -101,7 +103,7 @@ public class LiikekontrolleriTest {
         uusikontrolleri.tarkastaLiike(39);
         assertEquals(3, box.getX());
     }
-    
+
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyX2() {
         kenttaelementit.clear();
@@ -111,7 +113,7 @@ public class LiikekontrolleriTest {
         uusikontrolleri.tarkastaLiike(37);
         assertEquals(-1, box.getX());
     }
-    
+
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyY() {
         kenttaelementit.clear();
@@ -121,7 +123,7 @@ public class LiikekontrolleriTest {
         uusikontrolleri.tarkastaLiike(40);
         assertEquals(3, box.getY());
     }
-    
+
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyY2() {
         kenttaelementit.clear();
@@ -131,7 +133,7 @@ public class LiikekontrolleriTest {
         uusikontrolleri.tarkastaLiike(38);
         assertEquals(-1, box.getY());
     }
-    
+
     @Test
     public void hahmoEiVoiSiirtyaKunVieressaUseampiLaatikkoVierekkain() {
         kenttaelementit.clear();
@@ -142,6 +144,42 @@ public class LiikekontrolleriTest {
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(39);
         assertEquals(1, hahmo.getX());
+    }
+    
+    @Test
+    public void hahmoVoiSiirtyaKunVieressaLaatikkoJaSenTakanaRotko() {
+        kenttaelementit.clear();
+        Laatikko box = new Laatikko(2, 1, 1);
+        Rotko rotko = new Rotko(3, 1, 1);
+        kenttaelementit.add(box);
+        kenttaelementit.add(rotko);
+        Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
+        uusikontrolleri.tarkastaLiike(39);
+        assertEquals(kenttaelementit.size(), 1);
+    }
+    
+    @Test
+    public void hahmoVoiSiirtyaKunVieressaLaatikkoJaSenTakanaRotkoJollaIdentiteettiVaarin() {
+        kenttaelementit.clear();
+        Laatikko box = new Laatikko(2, 1, 1);
+        Rotko rotko = new Rotko(3, 1, 1);
+        rotko.setId("olenJokuMuuElementti");
+        kenttaelementit.add(box);
+        kenttaelementit.add(rotko);
+        Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
+        assertEquals(false, uusikontrolleri.tarkastaLiike(39));
+    }
+    
+     @Test
+    public void hahmoVoiSiirtyaKunVieressaLaatikkoJaSenTakanaTaysiRotko() {
+        kenttaelementit.clear();
+        Laatikko box = new Laatikko(2, 1, 1);
+        Rotko rotko = new Rotko(3, 1, 1);
+        rotko.setId("taysirotko");
+        kenttaelementit.add(box);
+        kenttaelementit.add(rotko);
+        Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
+        assertEquals(true, uusikontrolleri.tarkastaLiike(39));
     }
 
 //    @Test
@@ -156,5 +194,35 @@ public class LiikekontrolleriTest {
 //        }
 //        assertEquals(hahmo.getX(), 1);
 //    }
+    @Test
+    public void tarkastaPutoaakoRotkoonToimii() {
+        kenttaelementit.clear();
+        kenttaelementit.add(new Rotko(2, 1, 1));
+        hahmo.siirry(1, 0);
+        assertEquals(true, kontrolleri.tarkastaPutoaakoRotkoon());
+    }
+
+    @Test
+    public void tarkastaPutoaakoRotkoonToimii2() {
+        kenttaelementit.clear();
+        Rotko rotko = new Rotko(2, 1, 1);
+        rotko.setId("enOleRotko");
+        kenttaelementit.add(rotko);
+        hahmo.siirry(1, 0);
+        assertEquals(false, kontrolleri.tarkastaPutoaakoRotkoon());
+    }
+
+//    @Test
+//    public void tarkastaOnkoMaalissaToimii() {
+//        Peli peli = new Peli(40);
+//        peli.getHahmo().setX(1);
+//        peli.getHahmo().setY(0);
+//        peli.getMaali().setX(2);
+//        peli.getMaali().setY(0);
+//        hahmo.siirry(1, 0);
+//        assertEquals(true, kontrolleri.tarkastaOnkoMaalissa(peli));
+//    }
+    
+  
 
 }

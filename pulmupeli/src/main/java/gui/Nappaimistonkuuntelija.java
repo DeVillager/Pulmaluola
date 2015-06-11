@@ -45,7 +45,25 @@ public class Nappaimistonkuuntelija implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println(e.getKeyCode());
+//        System.out.println(e.getKeyCode());
+        hahmo.asetaUusikuva(e.getKeyCode());
+        siirraHahmoaJosVoi(e);
+
+        component.repaint();
+        
+        if (tarkastaja.tarkastaOnkoMaalissa(peli)) {
+            hahmo.asetaUusikuva(40);
+            peli.getRakentaja().luoSeuraavaTaso(peli);
+        }
+
+        if (tarkastaja.tarkastaPutoaakoRotkoon()) {
+            hahmo.asetaUusikuva(40);
+            peli.getRakentaja().luoTasoAlusta(peli.getHahmo());
+        }
+    }
+
+
+    private void siirraHahmoaJosVoi(KeyEvent e) {
         if (tarkastaja.tarkastaLiike(e.getKeyCode())) {
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 hahmo.siirry(-1 * hahmo.getKoko(), 0);
@@ -62,34 +80,9 @@ public class Nappaimistonkuuntelija implements KeyListener {
                 hahmo.setY(peli.getRakentaja().getHahmonYSijaintiTasossa());
             }
         }
-
-        component.repaint();
-        if (hahmo.getX() == this.peli.getRakentaja().getMaali().getX() && hahmo.getY() == this.peli.getRakentaja().getMaali().getY()) {
-            peli.getRakentaja().nostaTasoa();
-            if (peli.getRakentaja().getLevel() == 3) {
-                this.peli.getIkkunanPiirtaja().getPelinFrame().dispose();
-                peli.getIkkunanPiirtaja().luoVoittoIkkuna();
-            }
-            hahmo.setX(this.peli.getRakentaja().getMaali().getX());
-            hahmo.setY(this.peli.getRakentaja().getMaali().getY());
-            this.peli.getRakentaja().getLista().clear();
-//            this.peli.getPA().setMaali(peli.getRakentaja().getMaali());
-            peli.getRakentaja().luoKentta(hahmo.getKoko());
-            this.peli.getPA().setMaali(peli.getRakentaja().getMaali());
-            return;
-        }
-
-        for (Elementti elem : peli.getLista()) {
-            if ("rotko".equals(elem.getId()) && elem.getX() == hahmo.getX() && elem.getY() == hahmo.getY()) {
-                this.peli.getLista().clear();
-                peli.getRakentaja().luoKentta(hahmo.getKoko());
-                hahmo.setX(peli.getRakentaja().getHahmonXSijaintiTasossa());
-                hahmo.setY(peli.getRakentaja().getHahmonYSijaintiTasossa());
-                return;
-            }
-        }
     }
-
+    
+    
     @Override
     public void keyTyped(KeyEvent e) {
     }

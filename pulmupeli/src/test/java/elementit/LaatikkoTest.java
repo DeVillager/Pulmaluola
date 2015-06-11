@@ -44,5 +44,22 @@ public class LaatikkoTest {
     public void identiteettiOikein() {
         assertEquals(laatikko.getId(), "laatikko");
     }
+    
+    @Test
+    public void setIdToimii() {
+        laatikko.setId("uusiId");
+        assertEquals(laatikko.getId(), "uusiId");
+    }
+    
+    @Test
+    public void getImageToimii() {
+        assertEquals(laatikko.getImage(), "omakivi2.png");
+    }
+    
+    @Test
+    public void setImageToimii() {
+        laatikko.setImage("uusiKuva");
+        assertEquals(laatikko.getImage(), "uusiKuva");
+    }
 
 }

@@ -2,5 +2,6 @@ elementit\HahmoTest.class
 elementit\LaatikkoTest.class
 logiikka\KentanrakentajaTest.class
 logiikka\LiikekontrolleriTest.class
+elementit\RotkoTest.class
 elementit\SeinaTest.class
 elementit\MaaliTest.class

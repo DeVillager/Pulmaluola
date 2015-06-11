@@ -58,4 +58,53 @@ public class HahmoTest {
         assertEquals(160, hahmo.getY());
     }
     
+    @Test
+    public void setIdToimii() {
+        hahmo.setId("uusiId");
+        assertEquals(hahmo.getId(), "uusiId");
+    }
+    
+    
+    @Test
+    public void setImageToimii() {
+        hahmo.setImage("uusiKuva");
+        assertEquals(hahmo.getImage(), "uusiKuva");
+    }
+    
+    @Test
+    public void asetaKuvaEiMuutaKuvaaJosVaaraNappain() {
+        hahmo.asetaUusikuva(36);
+        assertEquals(hahmo.getImage(), "omahahmoD.png");
+    }
+    
+    @Test
+    public void asetaKuvaVaihtaaOikeaanKuvaan1() {
+        hahmo.asetaUusikuva(37);
+        assertEquals(hahmo.getImage(), "omahahmoL.png");
+    }
+    
+    @Test
+    public void asetaKuvaVaihtaaOikeaanKuvaan2() {
+        hahmo.asetaUusikuva(38);
+        assertEquals(hahmo.getImage(), "omahahmoU.png");
+    }
+    
+    @Test
+    public void asetaKuvaVaihtaaOikeaanKuvaan3() {
+        hahmo.asetaUusikuva(39);
+        assertEquals(hahmo.getImage(), "omahahmoR.png");
+    }
+    
+    @Test
+    public void asetaKuvaVaihtaaOikeaanKuvaan4() {
+        hahmo.asetaUusikuva(39);        
+        hahmo.asetaUusikuva(40);
+        assertEquals(hahmo.getImage(), "omahahmoD.png");
+    }
+    
+    @Test
+    public void asetaKuvaVaihtaaOikeaanKuvaan5() {
+        hahmo.asetaUusikuva(82);        
+        assertEquals(hahmo.getImage(), "omahahmoD.png");
+    }
 }

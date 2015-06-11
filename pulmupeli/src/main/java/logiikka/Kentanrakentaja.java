@@ -1,12 +1,12 @@
 package logiikka;
 
 import elementit.Elementti;
+import elementit.Hahmo;
 import elementit.Laatikko;
 import elementit.Maali;
 import elementit.Rotko;
-//import elementit.Ruoho;
 import elementit.Seina;
-//import elementit.Vesi;
+import gui.Peli;
 import java.util.ArrayList;
 
 /**
@@ -39,6 +39,108 @@ public class Kentanrakentaja {
 
     public Maali getMaali() {
         return maali;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    /**
+     * Nostaa pelin tasoa.
+     */
+    public void nostaTasoa() {
+        this.level++;
+    }
+
+    /**
+     * Metodi kutsuu useampaa metodia, jotka yhdessä konstruoivat pelin
+     * ensimmäisen tason
+     */
+    public void luoEkaTaso() {
+        luoReunat(koko);
+        lisaaKentalleSeinat();
+        lisaaKentalleLaatikot();
+        lisaaMaali(1, 12, koko);
+    }
+
+    /**
+     * Metodi kutsuu useampaa metodia, jotka yhdessä konstruoivat pelin toisen
+     * tason
+     */
+    public void luoTokaTaso() {
+        luoReunat2(koko);
+        lisaaKentalleSeinat2();
+        lisaaKentalleLaatikot2();
+        lisaaKentalleRotkot();
+        lisaaMaali(8, 1, koko);
+    }
+
+    /**
+     * Meodi palauttaa hahmon x-koordinaatin, joka sillä on pelin alussa.
+     * Koordinaatti riippuu sen hetkisestä tasosta.
+     *
+     * @return hahmon x-koordinaatti kyseisen tason alussa
+     */
+    public int getHahmonXSijaintiTasossa() {
+        if (level == 1) {
+            return 7 * koko;
+        } else if (level == 2) {
+            return 1 * koko;
+        }
+        return 0;
+    }
+
+    /**
+     * Meodi palauttaa hahmon y-koordinaatin, joka sillä on pelin alussa.
+     * Koordinaatti riippuu sen hetkisestä tasosta.
+     *
+     * @return hahmon y-koordinaatti kyseisen tason alussa
+     */
+    public int getHahmonYSijaintiTasossa() {
+        if (level == 1) {
+            return 4 * koko;
+        } else if (level == 2) {
+            return 12 * koko;
+        }
+        return 0;
+    }
+
+    /**
+     * Metodi lisää kenttaelementit-listaan maalin
+     */
+    public void lisaaMaali(int x, int y, int koko) {
+        this.maali = new Maali(x * koko, y * koko, koko);
+        kenttaelementit.add(maali);
+    }
+
+    /**
+     * Metodi nostaa pelin tasoa ja näyttää voittoikkunan, jos taso on 3. Muuten
+     * kutsutaan metodia, jolla luodaan seuraava taso.
+     *
+     * @param peli käynnissä oleva peli
+     */
+    public void luoSeuraavaTaso(Peli peli) {
+        nostaTasoa();
+        if (this.level == 3) {
+            peli.getIkkunanPiirtaja().getPelinFrame().dispose();
+            peli.getIkkunanPiirtaja().luoVoittoIkkuna();
+        }
+        luoTasoAlusta(peli.getHahmo());
+        peli.getPA().setMaali(maali);
+    }
+
+    /**
+     * Metodi luo sen hetkisen tason alkuasettelun. Tyhjentää listan
+     * elementeistä, luo uuden kentän ja asettaa hahmon tason mukaiseen
+     * koordinaattiin
+     *
+     * @param hahmo pelaajan hahmo
+     */
+    public void luoTasoAlusta(Hahmo hahmo) {
+        kenttaelementit.clear();
+        luoKentta(hahmo.getKoko());
+        hahmo.setX(this.getHahmonXSijaintiTasossa());
+        hahmo.setY(this.getHahmonYSijaintiTasossa());
     }
 
     /**
@@ -109,44 +211,11 @@ public class Kentanrakentaja {
     }
 
     /**
-     * Metodi kutsuu osametodia, joka lisää seiniä kenttaelementit-listalle
-     */
-    public void lisaaKentalleSeinat() {
-//        level1S();
-        level2S();
-    }
-
-    /**
-     * Metodi kutsuu osametodia, joka lisää laatikoita kenttaelementit-listalle
-     */
-    public void lisaaKentalleLaatikot() {
-//        level1L();
-        level2L();
-    }
-
-//    private void level1S() {
-//        lisaaSeina(4, 4, koko);
-//        lisaaSeina(3, 1, koko);
-//        lisaaSeina(8, 11, koko);
-//        lisaaSeina(7, 4, koko);
-//        lisaaSeina(5, 3, koko);
-//    }
-//
-//    private void level1L() {
-//        lisaaLaatikko(3, 2, koko);
-//        lisaaLaatikko(4, 1, koko);
-//        lisaaLaatikko(5, 6, koko);
-//        lisaaLaatikko(8, 10, koko);
-//        lisaaLaatikko(13, 12, koko);
-//        lisaaLaatikko(10, 9, koko);
-//    }
-    /**
      * Metodi lisää kenttaelementit-listaan ennaltamääritellyt laatikot
      * lisaaLaatikko-metodeilla
      */
-    public void level2L() {
-//        lisaaLaatikko(6, 1, koko);
-        lisaaRotko(2, 1, koko);
+    public void lisaaKentalleLaatikot() {
+        lisaaLaatikko(6, 1, koko);
         lisaaLaatikko(10, 1, koko);
         lisaaLaatikko(10, 2, koko);
         lisaaLaatikko(11, 2, koko);
@@ -181,7 +250,7 @@ public class Kentanrakentaja {
      * Metodi lisää kenttaelementit-listaan ennaltamääritellyt seinät
      * lisaaSeina-metodeilla
      */
-    public void level2S() {
+    public void lisaaKentalleSeinat() {
         lisaaSeina(1, 1, koko);
         lisaaSeina(13, 1, koko);
         lisaaSeina(1, 2, koko);
@@ -245,35 +314,28 @@ public class Kentanrakentaja {
     }
 
     /**
-     * Metodi lisää kenttaelementit-listaan maalin
+     * Metodi lisää kenttäelementit-listaan seiniä, jotka rajaavat pelialueen
+     *
+     * @param koko Pelin koko
      */
-    public void lisaaMaali(int x, int y, int koko) {
-        this.maali = new Maali(x * koko, y * koko, koko);
-        kenttaelementit.add(maali);
+    public void luoReunat2(int koko) {
+        int maxraja = 15;
+        for (int i = 0; i < maxraja; i++) {
+            for (int j = 0; j < maxraja; j++) {
+                if ((i == 0 || j == 0) && koko > 0) {
+                    lisaaSeina(i, j, koko);
+                } else if (i >= maxraja - 2 || j >= maxraja - 2) {
+                    lisaaSeina(i, j, koko);
+                }
+            }
+        }
     }
 
-    public void level3S() {
-
-    }
-
-//    public void luoKentta2(int koko) {
-//        luoReunat2(koko);
-//        lisaaKentalleSeinat2();
-//        lisaaKentalleLaatikot2();
-//        lisaaKentalleRotkot();
-//        lisaaMaali(10, 10, koko);
-//    }
-//    private void lisaaMaali2() {
-//        for (Elementti elem : kenttaelementit) {
-//            if (elem.getId().equals("maali")) {
-//                kenttaelementit.remove(elem);
-//                return;
-//            }
-//        }
-//        this.maali = new Maali(10 * koko, 10 * koko, koko);
-//        kenttaelementit.add(maali);
-//    }
-    private void lisaaKentalleSeinat2() {
+    /**
+     * Metodi lisää kenttaelementit-listaan ennaltamääritellyt seinät
+     * lisaaSeina-metodeilla
+     */
+    public void lisaaKentalleSeinat2() {
         lisaaSeina(1, 1, koko);
         lisaaSeina(1, 2, koko);
         lisaaSeina(1, 3, koko);
@@ -326,7 +388,11 @@ public class Kentanrakentaja {
         lisaaSeina(12, 6, koko);
     }
 
-    private void lisaaKentalleLaatikot2() {
+    /**
+     * Metodi lisää kenttaelementit-listaan ennaltamääritellyt laatikot
+     * lisaaLaatikko-metodeilla
+     */
+    public void lisaaKentalleLaatikot2() {
         lisaaLaatikko(1, 6, koko);
         lisaaLaatikko(1, 10, koko);
         lisaaLaatikko(2, 4, koko);
@@ -346,21 +412,12 @@ public class Kentanrakentaja {
         lisaaLaatikko(11, 8, koko);
         lisaaLaatikko(12, 9, koko);
     }
-
-    private void luoReunat2(int koko) {
-        int maxraja = 15;
-        for (int i = 0; i < maxraja; i++) {
-            for (int j = 0; j < maxraja; j++) {
-                if ((i == 0 || j == 0) && koko > 0) {
-                    lisaaSeina(i, j, koko);
-                } else if (i >= maxraja - 2 || j >= maxraja - 2) {
-                    lisaaSeina(i, j, koko);
-                }
-            }
-        }
-    }
-
-    private void lisaaKentalleRotkot() {
+    
+    /**
+     * Metodi lisää kenttaelementit-listaan ennaltamääritellyt rotkot
+     * lisaaRotko-metodeilla
+     */
+    public void lisaaKentalleRotkot() {
         lisaaRotko(1, 4, koko);
         lisaaRotko(1, 8, koko);
         lisaaRotko(3, 3, koko);
@@ -381,87 +438,4 @@ public class Kentanrakentaja {
         lisaaRotko(12, 7, koko);
         lisaaRotko(12, 11, koko);
     }
-
-    public int getLevel() {
-        return this.level;
-    }
-
-    public void nostaTasoa() {
-        this.level++;
-    }
-
-    private void luoEkaTaso() {
-        luoReunat(koko);
-        lisaaKentalleSeinat();
-        lisaaKentalleLaatikot();
-        lisaaMaali(1, 12, koko);
-    }
-
-    private void luoTokaTaso() {
-        luoReunat2(koko);
-        lisaaKentalleSeinat2();
-        lisaaKentalleLaatikot2();
-        lisaaKentalleRotkot();
-        lisaaMaali(8, 1, koko);
-    }
-
-    public int getHahmonXSijaintiTasossa() {
-        if (level == 1) {
-            return 7 * koko;
-        } else if (level == 2) {
-            return 1 * koko;
-        }
-        return 0;
-    }
-
-    public int getHahmonYSijaintiTasossa() {
-        if (level == 1) {
-            return 4 * koko;
-        } else if (level == 2) {
-            return 12 * koko;
-        }
-        return 0;
-    }
-//
-//    private void luoKolmosTaso() {
-//        luoKentta3();
-//    }
-//
-//    private void luoKentta3() {
-//        
-////        lisaaRuohot();
-////        lisaaVesiReunat();
-////        lisaaMaali(10, 10, koko);
-//    }
-//
-//    private void lisaaRuohot() {
-//        int maxraja = 15;
-//        for (int i = 0; i < maxraja; i++) {
-//            for (int j = 0; j < maxraja; j++) {
-//                lisaaRuoho(i, j, koko);
-//            }
-//        }
-//    }
-//
-//    private void lisaaVesiReunat() {
-//        int maxraja = 15;
-//        for (int i = 0; i < maxraja; i++) {
-//            for (int j = 0; j < maxraja; j++) {
-//                if ((i == 0 || j == 0) && koko > 0) {
-//                    lisaaVesi(i, j, koko);
-//                } else if (i >= maxraja - 1 || j >= maxraja - 1) {
-//                    lisaaVesi(i, j, koko);
-//                }
-//            }
-//        }
-//    }
-//
-//    private void lisaaVesi(int i, int j, int koko) {
-//        kenttaelementit.add(new Vesi(koko * i, koko * j, koko));
-//    }
-//
-//    private void lisaaRuoho(int i, int j, int koko) {
-//        kenttaelementit.add(new Ruoho(koko * i, koko * j, koko));
-//    }
-
 }

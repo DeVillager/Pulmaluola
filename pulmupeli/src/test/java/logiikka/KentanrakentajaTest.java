@@ -1,6 +1,7 @@
 package logiikka;
 
 import elementit.Elementti;
+import elementit.Hahmo;
 import elementit.Maali;
 import elementit.Seina;
 import java.util.ArrayList;
@@ -142,13 +143,13 @@ public class KentanrakentajaTest {
     @Test
     public void lisaaKentalleSeinatLisaaOikeanMaaranSeinia() {
         kr.lisaaKentalleSeinat();
-        assertEquals(kenttaelementit.size(), 63);
+        assertEquals(kenttaelementit.size(), 64);
     }
 
     @Test
     public void lisaaKentalleLaatikotLisaaOikeanMaaranLaatikoita() {
         kr.lisaaKentalleLaatikot();
-        assertEquals(kenttaelementit.size(), 31);
+        assertEquals(kenttaelementit.size(), 33);
     }
 
     @Test
@@ -173,5 +174,97 @@ public class KentanrakentajaTest {
         }
         assertEquals(true, totuus);
     }
+
+    @Test
+    public void getMaaliToimii() {
+        assertEquals(12 * 40, kr.getMaali().getY());
+    }
+
+    @Test
+    public void luoTasoAlustaToimii1() {
+        Hahmo hahmo = new Hahmo(1, 2, koko);
+        kr.luoTasoAlusta(hahmo);
+        assertEquals(hahmo.getX(), 7 * koko);
+    }
+
+    @Test
+    public void luoTasoAlustaToimii2() {
+        Hahmo hahmo = new Hahmo(1, 2, koko);
+        kr.nostaTasoa();
+        kr.luoTasoAlusta(hahmo);
+        assertEquals(hahmo.getX(), koko);
+    }
+
+    @Test
+    public void luoKenttaToimii() {
+        Hahmo hahmo = new Hahmo(1, 2, koko);
+        kr.nostaTasoa();
+        kr.luoKentta(koko);
+        assertEquals(kenttaelementit.size(), 173);
+    }
+
+    @Test
+    public void getHahmonXSijaintiTasossaToimii1() {
+        assertEquals(kr.getHahmonXSijaintiTasossa(), 7 * koko);
+    }
+
+    @Test
+    public void getHahmonXSijaintiTasossaToimii2() {
+        kr.nostaTasoa();
+        assertEquals(kr.getHahmonXSijaintiTasossa(), koko);
+    }
+
+    @Test
+    public void getHahmonYSijaintiTasossaToimii1() {
+        assertEquals(kr.getHahmonYSijaintiTasossa(), 4 * koko);
+    }
+
+    @Test
+    public void getHahmonYSijaintiTasossaToimii2() {
+        kr.nostaTasoa();
+        assertEquals(kr.getHahmonYSijaintiTasossa(), 12 * koko);
+    }
+    
+    @Test
+    public void luoEkaTasoToimii() {
+        kr.luoEkaTaso();
+        assertEquals(kenttaelementit.size(), 150);
+    }
+
+    @Test
+    public void luoTokaTasoToimii() {
+        kr.luoTokaTaso();
+        assertEquals(kenttaelementit.size(), 173);
+    }
+
+    @Test
+    public void getLevelToimii() {
+        assertEquals(kr.getLevel(), 1);
+    }
+
+    @Test
+    public void nostaTasoaToimii() {
+        kr.nostaTasoa();
+        assertEquals(kr.getLevel(), 2);
+    }
+    
+    @Test
+    public void lisaaKentalleSeinatLisaaOikeanMaaranSeiniaTasolla2() {
+        kr.lisaaKentalleSeinat2();
+        assertEquals(kenttaelementit.size(), 54);
+    }
+
+    @Test
+    public void lisaaKentalleLaatikotLisaaOikeanMaaranLaatikoitaTasolla2() {
+        kr.lisaaKentalleLaatikot2();
+        assertEquals(kenttaelementit.size(), 22);
+    }
+    
+    @Test
+    public void luoReunat2lisaaOikeanMaaranSeinia() {
+        kr.luoReunat2(koko);
+        assertEquals(kenttaelementit.size(), 85);
+    }
+    
 
 }

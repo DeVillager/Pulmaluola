@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="elementit.HahmoTest" time="0.188" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="elementit.HahmoTest" time="0.282" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_45\jre\bin"/>
@@ -61,12 +61,20 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="elementit.HahmoTest" name="setteriYToimii" time="0.109"/>
+  <testcase classname="elementit.HahmoTest" name="setteriYToimii" time="0.157"/>
   <testcase classname="elementit.HahmoTest" name="getteriXToimii" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaEiMuutaKuvaaJosVaaraNappain" time="0"/>
   <testcase classname="elementit.HahmoTest" name="getteriKokoToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="getteriYToimii" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="setImageToimii" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan1" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan2" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan3" time="0.016"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan4" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan5" time="0"/>
   <testcase classname="elementit.HahmoTest" name="identiteettiOikein" time="0"/>
   <testcase classname="elementit.HahmoTest" name="siirtyminenXToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="setteriXToimii" time="0"/>
+  <testcase classname="elementit.HahmoTest" name="setIdToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="siirtyminenYToimii" time="0"/>
 </testsuite>

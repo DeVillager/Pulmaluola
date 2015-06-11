@@ -24,8 +24,9 @@ public class IkkunanPiirtaja {
     private int skaala;
     private JFrame valikko;
     private JFrame pelinFrame;
-    private Soitin soitin;
+//    private Soitin soitin;
     private JFrame ohjeet;
+//    private AudioFilePlayer player;
 
     /**
      * Luo ikkunanpiirtäjän, joka tuntee pelin sekä skaalan.
@@ -80,9 +81,10 @@ public class IkkunanPiirtaja {
      */
     public void luoPeliIkkuna() {
 
-        soitin = new Soitin("src/images/sky.wav");
+//        soitin = new Soitin("src/images/sky.mp3");
+//        player = new AudioFilePlayer();
         pelinFrame = new JFrame("Peli");
-        pelinFrame = new JFrame("Pulmapeli");
+        pelinFrame = new JFrame("Luolapeli");
         pelinFrame.setPreferredSize(new Dimension(616, 638));
         pelinFrame.setLocation(700, 40);
         pelinFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
