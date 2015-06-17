@@ -2,16 +2,21 @@
 
 **Aihe**:
 Pulmapeli, jossa täytyy ratkaista reitti luolasta ulos. Peli on ylhäältäpäin kuvattu ja siinä liikutetaan pelihahmoa nuolinäppäimillä.
-Esteenä voi olla mm. kiviä, joita hahmon tulee työntää tieltänsä. Kun hahmo pääsee portaisiin, taso on läpäisty. Ensimmäiseen versioon
-tulee hahmon siirtämistä peliruudulla, mutta myöhemmissä versioissa tulee lisää kenttäelementtejä, kuten kivet ja rotkot sekä tietenkin portaat. Lopuksi lisätään valikko, josta peli aloitetaan
-ja parannetaan mahdollisesti grafiikoita ja lisätään musiikkia.
-Lopullinen peli on myös laajennettavissa; esimerkiksi kenttäelementtien tai tasojen lisääminen on helppoa.
+Seinät rajoittavat alueen, jonka sisällä hahmoa voi liikuttaa.
+Hahmo tulee saada liikutettua portaisiin, jolloin taso on läpäisty ja uusi taso aukeaa.
+Kahden tason jälkeen peli on läpäisty.
+
+Ensimmäisellä tasolla hahmon tulee työntää kiviä tieltänsä viisaasti, jotta reitti portaisiin löytyy.
+Toisella tasolla lisänä tulevat rotkot, joihin hahmon pudotessa taso alkaa alusta. Kiven pudottaminen rotkoon kuitenkin täyttää sen, jolloin hahmo voi liikkua täytetyn rotkon yli.
+
+Peli on laajennettavissa; esimerkiksi kenttäelementtien tai tasojen lisääminen onnistuu helposti.
 
 **Käyttäjät**:
 - Pelaaja
 
 **Käyttäjän toiminnot**:
-- Valita 'Aloita'
+- Valita 'Pelaa'
+- Valita 'Ohjeet'
 - Valita 'Lopeta'
 - Liikuttaa hahmoa nuolinäppäimillä ja ratkaista hahmon tie maaliin.
 - Aloittaa taso alusta R-näppäimellä

@@ -5,22 +5,26 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
- * Luokka kuuntelee aloitusNappi ja lopetusNappi -JButton-olioita ja toimii annetusti
+ * Luokka kuuntelee aloitusNappi ja lopetusNappi -JButton-olioita ja toimii
+ * annetusti
  */
 public class Valikkokuuntelija implements ActionListener {
 
-    private IkkunanPiirtaja ip;
-    private JButton aloitusNappi;
-    private JButton lopetusNappi;
-    private JButton ohjeet;
-//    private JButton ok;
-    
+    private final IkkunanPiirtaja ip;
+    private final JButton aloitusNappi;
+    private final JButton lopetusNappi;
+    private final JButton ohjeet;
+
     /**
-     * Luo Valikkokuuntelija-olion, joka saa parametreinään Ikkunanpiirtajan, ja kaksi JButtonia
+     * Luo Valikkokuuntelija-olion, joka saa parametreinään Ikkunanpiirtajan, ja
+     * kaksi JButtonia
+     *
      * @param ip Pelin ikkunanpiirtaja, joka luo JFrame-olioita
-     * @param aloitusNappi Ikkunanpiirtajan luoman JFramen "Valikko" sisältämä JButton
-     * @param lopetusNappi Ikkunanpiirtajan luoman JFramen "Valikko" sisältämä JButton
-     * @param ohjeet
+     * @param aloitusNappi Ikkunanpiirtajan luoman JFramen "Valikko" sisältämä
+     * JButton
+     * @param lopetusNappi Ikkunanpiirtajan luoman JFramen "Valikko" sisältämä
+     * JButton
+     * @param ohjeet Ikkunanpiirtajan luoman JFramen "Ohjeet" sisältämä JButton
      */
     public Valikkokuuntelija(IkkunanPiirtaja ip, JButton aloitusNappi, JButton lopetusNappi, JButton ohjeet) {
         this.ip = ip;
@@ -30,13 +34,15 @@ public class Valikkokuuntelija implements ActionListener {
     }
 
     /**
-     * Avaa peli-ikkunan, jos pelaaja painoi aloitusNappia. Sulkee ohjelman, jos pelaaja painoi lopetusNappia.
+     * Avaa peli-ikkunan, jos pelaaja painoi aloitusNappia. Sulkee ohjelman, jos
+     * pelaaja painoi lopetusNappia.
+     *
      * @param e Painalluksen tapahtuma
      */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == aloitusNappi) {
-           ip.getValikonFrame().dispose();
+            ip.getValikonFrame().dispose();
             ip.luoPeliIkkuna();
         }
         if (e.getSource() == lopetusNappi) {
@@ -45,7 +51,5 @@ public class Valikkokuuntelija implements ActionListener {
         if (e.getSource() == ohjeet) {
             ip.luoOhjeIkkuna();
         }
-        
     }
-
 }

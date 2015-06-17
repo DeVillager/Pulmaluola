@@ -37,13 +37,10 @@ public class Piirtoalusta extends JPanel {
      *
      * @param graphics Olio, joka piirtää grafiikat
      */
+    @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-//        for (Elementti kenttaelementti : kenttalista) {
-//            if (kenttaelementti.getId().equals("ruoho")) {
-//                kenttaelementti.piirra(graphics);
-//            }
-//        }
+        
         for (Elementti kenttaelementti : kenttalista) {
             if (!kenttaelementti.getId().equals("laatikko")) {
                 kenttaelementti.piirra(graphics);

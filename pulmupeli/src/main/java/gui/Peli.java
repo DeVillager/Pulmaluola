@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import logiikka.Kentanrakentaja;
 import logiikka.Liikekontrolleri;
-//import pulmupele.Soitin;
 
+/**
+ * Luokka määrittelee peli-olion, joka tuntee pelin osaset
+ */
 public class Peli {
 
     private JFrame pelinFrame;
@@ -31,7 +33,7 @@ public class Peli {
      */
     public Peli(int koko) {
         this.skaala = koko;
-        this.hahmo = new Hahmo(0, 0, koko);
+        this.hahmo = new Hahmo(0, 0, koko, "hahmo", "omahahmoD.png");
         this.kenttalista = new ArrayList<>();
         this.rakentaja = new Kentanrakentaja(kenttalista, koko);
         this.ip = new IkkunanPiirtaja(this, skaala);
@@ -66,8 +68,6 @@ public class Peli {
         this.ip.getPelinFrame().addKeyListener(new Nappaimistonkuuntelija(hahmo, pa, tarkastaja, this));
     }
 
-    // Tästä eteenpäin loput metodit ovat gettereitä
-    
     public IkkunanPiirtaja getIkkunanPiirtaja() {
         return this.ip;
     }

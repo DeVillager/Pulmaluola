@@ -19,9 +19,9 @@ public class KentanrakentajaTest {
     @Before
     public void setUp() {
         kenttaelementit = new ArrayList<Elementti>();
-        kenttaelementit.add(new Seina(40, 80, koko));
-        kenttaelementit.add(new Seina(80, 80, koko));
-        kenttaelementit.add(new Seina(120, 360, koko));
+        kenttaelementit.add(new Seina(40, 80, koko, "seina", "omaseina2.png"));
+        kenttaelementit.add(new Seina(80, 80, koko, "seina", "omaseina2.png"));
+        kenttaelementit.add(new Seina(120, 360, koko, "seina", "omaseina2.png"));
         kr = new Kentanrakentaja(kenttaelementit, koko);
     }
 
@@ -143,21 +143,21 @@ public class KentanrakentajaTest {
     @Test
     public void lisaaKentalleSeinatLisaaOikeanMaaranSeinia() {
         kr.lisaaKentalleSeinat();
-        assertEquals(kenttaelementit.size(), 64);
+        assertEquals(kenttaelementit.size(), 63);
     }
 
     @Test
     public void lisaaKentalleLaatikotLisaaOikeanMaaranLaatikoita() {
         kr.lisaaKentalleLaatikot();
-        assertEquals(kenttaelementit.size(), 33);
+        assertEquals(kenttaelementit.size(), 32);
     }
 
     @Test
     public void lisaaMaaliToimii() {
-        kr.lisaaMaali(1, 2, 3);
+        kr.lisaaMaali(1, 2, koko);
         boolean totuus = false;
         for (Elementti elem : kenttaelementit) {
-            if (elem.getId() == "maali" && elem.getX() == koko && elem.getY() == 12 * koko && elem.getKoko() == koko) {
+            if (elem.getId() == "maali" && elem.getX() == koko && elem.getY() == 2 * koko && elem.getKoko() == koko) {
                 totuus = true;
             }
         }
@@ -177,19 +177,20 @@ public class KentanrakentajaTest {
 
     @Test
     public void getMaaliToimii() {
-        assertEquals(12 * 40, kr.getMaali().getY());
+        kr.lisaaMaali(1, 12, koko);
+        assertEquals(12 * koko, kr.getMaali().getY());
     }
 
     @Test
     public void luoTasoAlustaToimii1() {
-        Hahmo hahmo = new Hahmo(1, 2, koko);
+        Hahmo hahmo = new Hahmo(1, 2, koko, "hahmo", "omahahmoD.png");
         kr.luoTasoAlusta(hahmo);
         assertEquals(hahmo.getX(), 7 * koko);
     }
 
     @Test
     public void luoTasoAlustaToimii2() {
-        Hahmo hahmo = new Hahmo(1, 2, koko);
+        Hahmo hahmo = new Hahmo(1, 2, koko, "hahmo", "omahahmoD.png");
         kr.nostaTasoa();
         kr.luoTasoAlusta(hahmo);
         assertEquals(hahmo.getX(), koko);
@@ -197,10 +198,10 @@ public class KentanrakentajaTest {
 
     @Test
     public void luoKenttaToimii() {
-        Hahmo hahmo = new Hahmo(1, 2, koko);
+        Hahmo hahmo = new Hahmo(1, 2, koko, "hahmo", "omahahmoD.png");
         kr.nostaTasoa();
         kr.luoKentta(koko);
-        assertEquals(kenttaelementit.size(), 173);
+        assertEquals(kenttaelementit.size(), 172);
     }
 
     @Test
@@ -228,13 +229,13 @@ public class KentanrakentajaTest {
     @Test
     public void luoEkaTasoToimii() {
         kr.luoEkaTaso();
-        assertEquals(kenttaelementit.size(), 150);
+        assertEquals(kenttaelementit.size(), 149);
     }
 
     @Test
     public void luoTokaTasoToimii() {
         kr.luoTokaTaso();
-        assertEquals(kenttaelementit.size(), 173);
+        assertEquals(kenttaelementit.size(), 172);
     }
 
     @Test
@@ -251,19 +252,19 @@ public class KentanrakentajaTest {
     @Test
     public void lisaaKentalleSeinatLisaaOikeanMaaranSeiniaTasolla2() {
         kr.lisaaKentalleSeinat2();
-        assertEquals(kenttaelementit.size(), 54);
+        assertEquals(kenttaelementit.size(), 53);
     }
 
     @Test
     public void lisaaKentalleLaatikotLisaaOikeanMaaranLaatikoitaTasolla2() {
         kr.lisaaKentalleLaatikot2();
-        assertEquals(kenttaelementit.size(), 22);
+        assertEquals(kenttaelementit.size(), 21);
     }
     
     @Test
     public void luoReunat2lisaaOikeanMaaranSeinia() {
         kr.luoReunat2(koko);
-        assertEquals(kenttaelementit.size(), 85);
+        assertEquals(kenttaelementit.size(), 84);
     }
     
 

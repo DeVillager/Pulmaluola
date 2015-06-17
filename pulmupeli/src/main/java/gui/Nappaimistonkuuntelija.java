@@ -38,31 +38,27 @@ public class Nappaimistonkuuntelija implements KeyListener {
     }
 
     /**
-     * Metodi pyytää liikekontrolleria tarkastamaan liikkeen, jonka jälkeen voi
-     * pyytää hahmoa siirtymään. Tarkastaa myös onko hahmo jo maalissa.
+     * Kun näppäintä painetaan, metodi asettaa hahmolle uuden kuvan ja kutsuu
+     * metodia, jolla ratkaistaan hahmon liikkuminen. Lopuksi kutsutaan metodia,
+     * joka tarkastaa lopputilanteen mahdolliset seuraukset.
      *
      * @param e Näppäimistöltä painetun napin tapahtuma
      */
     @Override
     public void keyPressed(KeyEvent e) {
-//        System.out.println(e.getKeyCode());
         hahmo.asetaUusikuva(e.getKeyCode());
         siirraHahmoaJosVoi(e);
-
         component.repaint();
-        
-        if (tarkastaja.tarkastaOnkoMaalissa(peli)) {
-            hahmo.asetaUusikuva(40);
-            peli.getRakentaja().luoSeuraavaTaso(peli);
-        }
-
-        if (tarkastaja.tarkastaPutoaakoRotkoon()) {
-            hahmo.asetaUusikuva(40);
-            peli.getRakentaja().luoTasoAlusta(peli.getHahmo());
-        }
+        loppuTarkastukset();
     }
 
-
+    /**
+     * Kun näppäintä on painettu, liikekontrolleri tarkastaa onko liike
+     * sallittu. Jos on, hahmoa siirretään tapahtuman mukaan tai taso luodaan
+     * uudelleen.
+     *
+     * @param e Näppäimistöltä painetun napin tapahtuma
+     */
     private void siirraHahmoaJosVoi(KeyEvent e) {
         if (tarkastaja.tarkastaLiike(e.getKeyCode())) {
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -81,8 +77,22 @@ public class Nappaimistonkuuntelija implements KeyListener {
             }
         }
     }
-    
-    
+
+    /**
+     * Metodi tarkastaa onko hahmo maalissa tai rotkossa. Jos hahmo on
+     * maaliruudussa, rakennetaan uusi taso. Jos hahmo on rotkoruudussa, luodaan
+     * nykyinen taso uudelleen.
+     */
+    public void loppuTarkastukset() {
+        if (tarkastaja.tarkastaOnkoMaalissa(peli)) {
+            hahmo.asetaUusikuva(40);
+            peli.getRakentaja().luoSeuraavaTaso(peli);
+        } else if (tarkastaja.tarkastaPutoaakoRotkoon()) {
+            hahmo.asetaUusikuva(40);
+            peli.getRakentaja().luoTasoAlusta(peli.getHahmo());
+        }
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
     }

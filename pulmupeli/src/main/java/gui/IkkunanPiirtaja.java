@@ -2,13 +2,8 @@ package gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import javax.swing.BoxLayout;
-import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,15 +19,13 @@ public class IkkunanPiirtaja {
     private int skaala;
     private JFrame valikko;
     private JFrame pelinFrame;
-//    private Soitin soitin;
     private JFrame ohjeet;
-//    private AudioFilePlayer player;
 
     /**
      * Luo ikkunanpiirtäjän, joka tuntee pelin sekä skaalan.
      *
-     * @param peli
-     * @param skaala
+     * @param peli tuntee pelin osaset
+     * @param skaala pelin koko
      */
     public IkkunanPiirtaja(Peli peli, int skaala) {
         this.peli = peli;
@@ -60,20 +53,16 @@ public class IkkunanPiirtaja {
     public void luoValikkoKomponentit(Container container) {
         container.setLayout(new GridLayout(3, 1));
         JButton aloitaPeli = new JButton("Pelaa");
-        JButton ohjeet = new JButton("Ohjeet");
+        JButton annaOhjeet = new JButton("Ohjeet");
         JButton lopetaPeli = new JButton("Lopeta");
-        Valikkokuuntelija valikonKuuntelija = new Valikkokuuntelija(this, aloitaPeli, lopetaPeli, ohjeet);
+        Valikkokuuntelija valikonKuuntelija = new Valikkokuuntelija(this, aloitaPeli, lopetaPeli, annaOhjeet);
         aloitaPeli.addActionListener(valikonKuuntelija);
         lopetaPeli.addActionListener(valikonKuuntelija);
-        ohjeet.addActionListener(valikonKuuntelija);
+        annaOhjeet.addActionListener(valikonKuuntelija);
 //        container.add(new JLabel("Löydä tie maaliin.\nLiikuta hahmoa nuolinäppäimillä ja aloita alusta R-näppäimellä.\nKiviä voi työntää liikkumalla niitä kohti."));
         container.add(aloitaPeli);
-        container.add(ohjeet);
+        container.add(annaOhjeet);
         container.add(lopetaPeli);
-    }
-
-    public JFrame getValikonFrame() {
-        return this.valikko;
     }
 
     /**
@@ -81,8 +70,6 @@ public class IkkunanPiirtaja {
      */
     public void luoPeliIkkuna() {
 
-//        soitin = new Soitin("src/images/sky.mp3");
-//        player = new AudioFilePlayer();
         pelinFrame = new JFrame("Peli");
         pelinFrame = new JFrame("Luolapeli");
         pelinFrame.setPreferredSize(new Dimension(616, 638));
@@ -92,10 +79,6 @@ public class IkkunanPiirtaja {
         peli.luoGrafiikat(pelinFrame.getContentPane());
         pelinFrame.pack();
         pelinFrame.setVisible(true);
-    }
-
-    public JFrame getPelinFrame() {
-        return this.pelinFrame;
     }
 
     /**
@@ -112,15 +95,16 @@ public class IkkunanPiirtaja {
         voittoIkkuna.setVisible(true);
     }
 
+    /**
+     * Metodi luo Ohje-ikkunan
+     */
     public void luoOhjeIkkuna() {
         this.ohjeet = new JFrame("Ohjeet");
         ohjeet.setPreferredSize(new Dimension(400, 638));
         ohjeet.setLocation(750, 80);
         ohjeet.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        BoxLayout layout = new FlowLayout(2, 5, 40);
         ohjeet.getContentPane().setLayout(new GridLayout(9, 1, 5, 50));
         JPanel panel = new JPanel();
-
         ohjeet.getContentPane().add(new JLabel("Löydä tie ulos luolastosta."));
         ohjeet.getContentPane().add(new JLabel("Liikuta hahmoa nuolinäppäimillä."));
         ohjeet.getContentPane().add(new JLabel("Voit työntää kiviä edestäsi liikkumalla niitä kohti."));
@@ -129,23 +113,22 @@ public class IkkunanPiirtaja {
         ohjeet.getContentPane().add(new JLabel("Portaista pääsee seuraavalle tasolle."));
         ohjeet.getContentPane().add(new JLabel("Jos jäät jumiin, aloita taso alusta R-näppäimellä."));
         ohjeet.getContentPane().add(new JLabel("Onnea matkaan!"));
-//        panel.add(new JLabel("Löydä tie ulos luolastosta. Liikuta hahmoa nuolinäppäimillä."));
-//        panel.add(new JLabel("Voit työntää kiviä edestäsi liikkumalla niitä kohti. Jos putoat kuoppaan, taso alkaa alusta."));
-//        panel.add(new JLabel("Työnnä kivi kuoppaan, niin voit kulkea kuopan yli. Portaista pääsee seuraavaan tasoon."));
-//        panel.add(new JLabel("Jos jäät jumiin, aloita taso alusta R-näppäimellä."));
-//        panel.add(new JLabel("Onnea matkaan!"));
-//        ohjeet.getContentPane().setLayout(new GridLayout(6,1));
         JButton ok = new JButton("OK");
-//        ohjeet.getContentPane().add(panel);
-//        ohjeet.add(panel, new GridBagConstraints());
         ok.addActionListener(new OkKuuntelija(this, ok));
         ohjeet.getContentPane().add(ok);
         ohjeet.pack();
         ohjeet.setVisible(true);
     }
 
+    public JFrame getValikonFrame() {
+        return this.valikko;
+    }
+
+    public JFrame getPelinFrame() {
+        return this.pelinFrame;
+    }
+
     public JFrame getOhjeIkkuna() {
         return this.ohjeet;
     }
-
 }

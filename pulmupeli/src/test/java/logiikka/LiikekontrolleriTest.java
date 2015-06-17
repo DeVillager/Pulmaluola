@@ -21,13 +21,13 @@ public class LiikekontrolleriTest {
 
     @Before
     public void setUp() {
-        hahmo = new Hahmo(1, 1, 1);
-        maali = new Maali(2, 2, 1);
+        hahmo = new Hahmo(1, 1, 1, "hahmo", "omahahmoD.png");
+        maali = new Maali(2, 2, 1, "maali", "omatportaat2.png");
         kenttaelementit = new ArrayList<>();
-        kenttaelementit.add(new Seina(2, 1, 9));
-        kenttaelementit.add(new Seina(1, 2, 9));
-        kenttaelementit.add(new Seina(0, 1, 9));
-        kenttaelementit.add(new Seina(1, 0, 9));
+        kenttaelementit.add(new Seina(2, 1, 9, "seina", "omaseina2.png"));
+        kenttaelementit.add(new Seina(1, 2, 9, "seina", "omaseina2.png"));
+        kenttaelementit.add(new Seina(0, 1, 9, "seina", "omaseina2.png"));
+        kenttaelementit.add(new Seina(1, 0, 9, "seina", "omaseina2.png"));
         kontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
     }
 
@@ -63,13 +63,13 @@ public class LiikekontrolleriTest {
 
     @Test
     public void tormaysTarkastusToimiiKunLiikuttuXSuunnassaOikealleHahmonKoonVerran() {
-        kenttaelementit.add(new Seina(hahmo.getX() + hahmo.getKoko(), hahmo.getY(), 9));
+        kenttaelementit.add(new Seina(hahmo.getX() + hahmo.getKoko(), hahmo.getY(), 9, "seina", "omaseina2.png"));
         assertEquals(kontrolleri.tarkastaEihanTormaa(39), false);
     }
 
     @Test
     public void tormaysTarkastusToimiiKunLiikuttuYSuunnassaAlasHahmonKoonVerran() {
-        kenttaelementit.add(new Seina(hahmo.getX(), hahmo.getY() + hahmo.getKoko(), 9));
+        kenttaelementit.add(new Seina(hahmo.getX(), hahmo.getY() + hahmo.getKoko(), 9, "seina", "omaseina2.png"));
         assertEquals(kontrolleri.tarkastaEihanTormaa(40), false);
     }
 
@@ -86,7 +86,7 @@ public class LiikekontrolleriTest {
     @Test
     public void hahmoSiirtyyKunVieressaLaatikko() {
         kenttaelementit.clear();
-        kenttaelementit.add(new Laatikko(2, 1, 1));
+        kenttaelementit.add(new Laatikko(2, 1, 1, "laatikko", "omakivi2.png"));
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         if (uusikontrolleri.tarkastaLiike(39)) {
             hahmo.siirry(1, 0);
@@ -97,7 +97,7 @@ public class LiikekontrolleriTest {
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyX() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(2, 1, 1);
+        Laatikko box = new Laatikko(2, 1, 1, "laatikko", "omakivi2.png");
         kenttaelementit.add(box);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(39);
@@ -107,7 +107,7 @@ public class LiikekontrolleriTest {
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyX2() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(0, 1, 1);
+        Laatikko box = new Laatikko(0, 1, 1, "laatikko", "omakivi2.png");
         kenttaelementit.add(box);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(37);
@@ -117,7 +117,7 @@ public class LiikekontrolleriTest {
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyY() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(1, 2, 1);
+        Laatikko box = new Laatikko(1, 2, 1, "laatikko", "omakivi2.png");
         kenttaelementit.add(box);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(40);
@@ -127,7 +127,7 @@ public class LiikekontrolleriTest {
     @Test
     public void hahmoSiirtyyKunVieressaLaatikkoJaLaatikkoSiirtyyY2() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(1, 0, 1);
+        Laatikko box = new Laatikko(1, 0, 1, "laatikko", "omakivi2.png");
         kenttaelementit.add(box);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(38);
@@ -137,44 +137,44 @@ public class LiikekontrolleriTest {
     @Test
     public void hahmoEiVoiSiirtyaKunVieressaUseampiLaatikkoVierekkain() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(2, 1, 1);
-        Laatikko box2 = new Laatikko(3, 1, 1);
+        Laatikko box = new Laatikko(2, 1, 1, "laatikko", "omakivi2.png");
+        Laatikko box2 = new Laatikko(3, 1, 1, "laatikko", "omakivi2.png");
         kenttaelementit.add(box);
         kenttaelementit.add(box2);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(39);
         assertEquals(1, hahmo.getX());
     }
-    
+
     @Test
     public void hahmoVoiSiirtyaKunVieressaLaatikkoJaSenTakanaRotko() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(2, 1, 1);
-        Rotko rotko = new Rotko(3, 1, 1);
+        Laatikko box = new Laatikko(2, 1, 1, "laatikko", "omakivi2.png");
+        Rotko rotko = new Rotko(3, 1, 1, "rotko", "omarotko.png");
         kenttaelementit.add(box);
         kenttaelementit.add(rotko);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         uusikontrolleri.tarkastaLiike(39);
         assertEquals(kenttaelementit.size(), 1);
     }
-    
+
     @Test
     public void hahmoVoiSiirtyaKunVieressaLaatikkoJaSenTakanaRotkoJollaIdentiteettiVaarin() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(2, 1, 1);
-        Rotko rotko = new Rotko(3, 1, 1);
+        Laatikko box = new Laatikko(2, 1, 1, "laatikko", "omakivi2.png");
+        Rotko rotko = new Rotko(3, 1, 1, "rotko", "omarotko.png");
         rotko.setId("olenJokuMuuElementti");
         kenttaelementit.add(box);
         kenttaelementit.add(rotko);
         Liikekontrolleri uusikontrolleri = new Liikekontrolleri(hahmo, maali, kenttaelementit);
         assertEquals(false, uusikontrolleri.tarkastaLiike(39));
     }
-    
-     @Test
+
+    @Test
     public void hahmoVoiSiirtyaKunVieressaLaatikkoJaSenTakanaTaysiRotko() {
         kenttaelementit.clear();
-        Laatikko box = new Laatikko(2, 1, 1);
-        Rotko rotko = new Rotko(3, 1, 1);
+        Laatikko box = new Laatikko(2, 1, 1, "laatikko", "omakivi2.png");
+        Rotko rotko = new Rotko(3, 1, 1, "rotko", "omarotko.png");
         rotko.setId("taysirotko");
         kenttaelementit.add(box);
         kenttaelementit.add(rotko);
@@ -197,7 +197,7 @@ public class LiikekontrolleriTest {
     @Test
     public void tarkastaPutoaakoRotkoonToimii() {
         kenttaelementit.clear();
-        kenttaelementit.add(new Rotko(2, 1, 1));
+        kenttaelementit.add(new Rotko(2, 1, 1, "rotko", "omarotko.png"));
         hahmo.siirry(1, 0);
         assertEquals(true, kontrolleri.tarkastaPutoaakoRotkoon());
     }
@@ -205,7 +205,7 @@ public class LiikekontrolleriTest {
     @Test
     public void tarkastaPutoaakoRotkoonToimii2() {
         kenttaelementit.clear();
-        Rotko rotko = new Rotko(2, 1, 1);
+        Rotko rotko = new Rotko(2, 1, 1, "rotko", "omarotko.png");
         rotko.setId("enOleRotko");
         kenttaelementit.add(rotko);
         hahmo.siirry(1, 0);
@@ -222,7 +222,4 @@ public class LiikekontrolleriTest {
 //        hahmo.siirry(1, 0);
 //        assertEquals(true, kontrolleri.tarkastaOnkoMaalissa(peli));
 //    }
-    
-  
-
 }

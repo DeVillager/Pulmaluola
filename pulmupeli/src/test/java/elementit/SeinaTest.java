@@ -10,7 +10,7 @@ public class SeinaTest {
 
     @Before
     public void setUp() {
-        seina = new Seina(1, 2, 3);
+        seina = new Seina(1, 2, 3, "seina", "omaseina2.png");
     }
 
     @Test
@@ -53,8 +53,8 @@ public class SeinaTest {
 
     @Test
     public void setImageToimii() {
-        seina.setImage("uusiKuva");
-        assertEquals(seina.getImage(), "uusiKuva");
+        seina.setImage("omaseina.png");
+        assertEquals(seina.getImage(), "omaseina.png");
     }
 
 }

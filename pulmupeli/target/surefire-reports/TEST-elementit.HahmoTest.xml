@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="elementit.HahmoTest" time="0.282" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="elementit.HahmoTest" time="0.218" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_45\jre\bin"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Tommi\klooni\pulmupeli"/>
+    <property name="user.dir" value="C:\Users\Tommi\Desktop\klooni\pulmupeli"/>
     <property name="java.runtime.version" value="1.8.0_45-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_45\jre\lib\endorsed"/>
@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="elementit.HahmoTest" name="setteriYToimii" time="0.157"/>
+  <testcase classname="elementit.HahmoTest" name="setteriYToimii" time="0.125"/>
   <testcase classname="elementit.HahmoTest" name="getteriXToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="asetaKuvaEiMuutaKuvaaJosVaaraNappain" time="0"/>
   <testcase classname="elementit.HahmoTest" name="getteriKokoToimii" time="0"/>
@@ -69,7 +69,7 @@
   <testcase classname="elementit.HahmoTest" name="setImageToimii" time="0"/>
   <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan1" time="0"/>
   <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan2" time="0"/>
-  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan3" time="0.016"/>
+  <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan3" time="0.015"/>
   <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan4" time="0"/>
   <testcase classname="elementit.HahmoTest" name="asetaKuvaVaihtaaOikeaanKuvaan5" time="0"/>
   <testcase classname="elementit.HahmoTest" name="identiteettiOikein" time="0"/>

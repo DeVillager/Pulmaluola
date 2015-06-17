@@ -16,3 +16,5 @@
 |9.6.2015|5h|Omien grafiikoiden piirtäminen ja asettaminen|
 |10.6.2015|3h|JUnit testien päivittämistä, koodin rakenteen parantelemista|
 |11.6.2015|9h|Grafiikoiden monipuolistamista, koodin sieventämistä Clean Coden mukaiseksi ja JUnit-testien lisäykset loppuun. Javadocin, luokkakaavion sekä sekvenssikaavioiden päivittäminen|
+|15.6.2015|3h|Koodin sievetämistä ja rakenteen muuttamista|
+|16.6.2015|6h|6. deadlinen tehtävien tekemistä, dokumenttien kirjoittamista, Clean Codeksi hiomista|

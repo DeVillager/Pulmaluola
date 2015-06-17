@@ -11,7 +11,7 @@ public class HahmoTest {
     
     @Before
     public void setUp() {
-        hahmo = new Hahmo(120, 80, 40);
+        hahmo = new Hahmo(120, 80, 40, "hahmo", "omahahmoD.png");
     }
     
     @Test
@@ -67,8 +67,8 @@ public class HahmoTest {
     
     @Test
     public void setImageToimii() {
-        hahmo.setImage("uusiKuva");
-        assertEquals(hahmo.getImage(), "uusiKuva");
+        hahmo.setImage("omahahmoU.png");
+        assertEquals(hahmo.getImage(), "omahahmoU.png");
     }
     
     @Test

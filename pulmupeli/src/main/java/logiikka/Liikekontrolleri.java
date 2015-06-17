@@ -3,18 +3,18 @@ package logiikka;
 import elementit.Elementti;
 import elementit.Hahmo;
 import elementit.Maali;
+import elementit.Rotko;
 import gui.Peli;
 import java.util.ArrayList;
-import javafx.scene.input.KeyCode;
 
 /**
  * Luokka tarkistaa voiko hahmoa siirtää annettuun suuntaan
  */
 public class Liikekontrolleri {
 
-    private Hahmo hahmo;
-    private ArrayList<Elementti> kenttaelementit;
-    private Maali maali;
+    private final Hahmo hahmo;
+    private final ArrayList<Elementti> kenttaelementit;
+    private final Maali maali;
 
     /**
      * Luo liikekontrollerin, joka tuntee hahmon, maalin sekä kenttäelementit
@@ -44,7 +44,7 @@ public class Liikekontrolleri {
 
     /**
      * Metodi tarkastaa onko hahmo samassa koordinaatissa kuin joku rotko, joka
-     * ei ole taysi
+     * ei ole taysi.
      *
      * @return true, jos hahmo on tyhjan rotkon päällä
      */
@@ -81,7 +81,6 @@ public class Liikekontrolleri {
      * @return true, jos hahmo ei törmää tai liike on sallittu; muuten false
      */
     boolean tarkastaEihanTormaa(int keyCode) {
-
         /**
          * Luodaan tarkastelua varten tarkastelukoordinaatit
          */
@@ -113,7 +112,7 @@ public class Liikekontrolleri {
     public ArrayList<Elementti> getKenttaobjektit() {
         return kenttaelementit;
     }
-
+    
     /**
      * Jos tarkastelukoordinaatissa on jokin elementti niin siirrytään
      * seuraavaan vaiheeseen
@@ -127,7 +126,7 @@ public class Liikekontrolleri {
         }
         return false;
     }
-
+    
     /**
      * Metodi suorittaa tarkastelun hahmon liikkeelle, mikä riippuu elementistä.
      *
@@ -140,13 +139,12 @@ public class Liikekontrolleri {
         if ("seina".equals(id)) {
             return true;
         } else if ("laatikko".equals(id)) {
-
             /**
-             * Määritellään nyt uusi tarkastelukoordinaatti
+             * Jos vieressa oli laatikko, määritellään uusi
+             * tarkastelukoordinaatti
              */
             int x = elem.getX();
             int y = elem.getY();
-
             /**
              * Tarkastellaan hahmolle annetun liikkeen suunta ja asetetaan
              * tarkastelukoordinaatti laatikon viereen kyseiseen suuntaan
@@ -163,28 +161,31 @@ public class Liikekontrolleri {
             if (keyCode == 40) {
                 y += hahmo.getKoko();
             }
-
             /**
              * Tarkastellaan nyt kyseisessa suunnassa olevaa elementtiä. Jos sen
-             * identiteetti on taysirotko, niin liike onnistuu. Jos taas sen
-             * identiteetti on mikä tahansa muu kuin rotko tai taysirotko, niin
-             * liike epäonnistuu. Jos ei kumpikaan aiemmista, niin sen
-             * identiteetti on rotko, jolloin muutetaan elementin identiteetti
-             * taysirotkoksi, annetaan sille uusi kuva, poistetaan laatikko-olio
-             * kentaelementeista ja liike onnistuu.
+             * tunnus on taysirotko, niin liike onnistuu. Jos sen tunnus on
+             * rotko, niin luodaan uusi rotko-olio vanhan rotkon paikalle, jolla
+             * on eri kuva ja tunnus. Sitten poistetaan elementeistä vanha rotko
+             * ja siirretty laatikko, ja liike onnistuu. Lopulta jos sen tunnus
+             * on mikä tahansa muu kuin rotko tai taysirotko, niin liike
+             * epäonnistuu.
              */
             for (Elementti elem2 : kenttaelementit) {
                 if (elem2.getX() == x && elem2.getY() == y) {
                     if ("taysirotko".equals(elem2.getId())) {
                         continue;
                     }
-                    if (!"rotko".equals(elem2.getId())) {
-                        return true;
-                    } else {
-                        elem2.setId("taysirotko");
-                        elem2.setImage("omataysirotko.png");
+                    if ("rotko".equals(elem2.getId())) {
+//                        elem2.setId("A");
+                        Rotko uusiRotko = new Rotko(elem2.getX(), elem2.getY(), hahmo.getKoko(), "taysirotko", "omataysirotko.png");
+//                        elem2.setImage("omataysirotko.png");
+//                        elem2.getImg()
+                        kenttaelementit.remove(elem2);
                         kenttaelementit.remove(elem);
+                        kenttaelementit.add(uusiRotko);
                         return false;
+                    } else {
+                        return true;
                     }
                 }
             }

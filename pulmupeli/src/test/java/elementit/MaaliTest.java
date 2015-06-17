@@ -11,7 +11,7 @@ public class MaaliTest {
 
     @Before
     public void setUp() {
-        maali = new Maali(40, 50, 60);
+        maali = new Maali(40, 50, 60, "maali", "omatportaat2.png");
     }
 
     @Test
@@ -54,8 +54,8 @@ public class MaaliTest {
 
     @Test
     public void setImageToimii() {
-        maali.setImage("uusiKuva");
-        assertEquals(maali.getImage(), "uusiKuva");
+        maali.setImage("omatportaat.png");
+        assertEquals(maali.getImage(), "omatportaat.png");
     }
 
 }

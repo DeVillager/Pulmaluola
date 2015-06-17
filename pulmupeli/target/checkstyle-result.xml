@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.7">
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\elementit\Elementti.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\elementit\Hahmo.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\elementit\Laatikko.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\elementit\Maali.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\elementit\Rotko.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\elementit\Seina.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\IkkunanPiirtaja.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\Kayttoliittyma.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\Nappaimistonkuuntelija.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\OkKuuntelija.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\Peli.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\Piirtoalusta.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\gui\Valikkokuuntelija.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\logiikka\Kentanrakentaja.java">
+<error line="1" severity="error" message="Tiedoston pituus on 439 riviÃ¤ (suurin sallittu on 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\logiikka\Liikekontrolleri.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\pulmupele\Main.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\ylimaaraiset\ElementinPiirtaja.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\ylimaaraiset\Elementti2.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\ylimaaraiset\Ruoho.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\ylimaaraiset\Soitin.java">
+</file>
+<file name="C:\Users\Tommi\Desktop\klooni\pulmupeli\src\main\java\ylimaaraiset\Vesi.java">
+</file>
+</checkstyle>

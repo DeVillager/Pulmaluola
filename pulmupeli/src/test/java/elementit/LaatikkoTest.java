@@ -10,7 +10,7 @@ public class LaatikkoTest {
 
     @Before
     public void setUp() {
-        laatikko = new Laatikko(10, 20, 30);
+        laatikko = new Laatikko(10, 20, 30, "laatikko", "omakivi2.png");
     }
 
     @Test
@@ -58,8 +58,8 @@ public class LaatikkoTest {
     
     @Test
     public void setImageToimii() {
-        laatikko.setImage("uusiKuva");
-        assertEquals(laatikko.getImage(), "uusiKuva");
+        laatikko.setImage("omakivi.png");
+        assertEquals(laatikko.getImage(), "omakivi.png");
     }
 
 }

@@ -28,8 +28,6 @@ public class Kentanrakentaja {
     public Kentanrakentaja(ArrayList<Elementti> kelementit, int koko) {
         this.kenttaelementit = kelementit;
         this.koko = koko;
-        this.maali = new Maali(1 * 40, 12 * 40, koko);
-        kenttaelementit.add(maali);
         this.level = 1;
     }
 
@@ -109,7 +107,7 @@ public class Kentanrakentaja {
      * Metodi lisää kenttaelementit-listaan maalin
      */
     public void lisaaMaali(int x, int y, int koko) {
-        this.maali = new Maali(x * koko, y * koko, koko);
+        this.maali = new Maali(x * koko, y * koko, koko, "maali", "omatportaat.png");
         kenttaelementit.add(maali);
     }
 
@@ -185,7 +183,7 @@ public class Kentanrakentaja {
      * @param koko Pelin koko
      */
     public void lisaaSeina(int x, int y, int koko) {
-        kenttaelementit.add(new Seina(koko * x, koko * y, koko));
+        kenttaelementit.add(new Seina(koko * x, koko * y, koko, "seina", "omaseina2.png"));
     }
 
     /**
@@ -196,7 +194,7 @@ public class Kentanrakentaja {
      * @param koko Pelin koko
      */
     public void lisaaLaatikko(int x, int y, int koko) {
-        kenttaelementit.add(new Laatikko(koko * x, koko * y, koko));
+        kenttaelementit.add(new Laatikko(koko * x, koko * y, koko, "laatikko", "omakivi2.png"));
     }
 
     /**
@@ -207,7 +205,7 @@ public class Kentanrakentaja {
      * @param koko Pelin koko
      */
     public void lisaaRotko(int x, int y, int koko) {
-        kenttaelementit.add(new Rotko(koko * x, koko * y, koko));
+        kenttaelementit.add(new Rotko(koko * x, koko * y, koko, "rotko", "omarotko.png"));
     }
 
     /**
@@ -412,7 +410,7 @@ public class Kentanrakentaja {
         lisaaLaatikko(11, 8, koko);
         lisaaLaatikko(12, 9, koko);
     }
-    
+
     /**
      * Metodi lisää kenttaelementit-listaan ennaltamääritellyt rotkot
      * lisaaRotko-metodeilla

@@ -10,7 +10,7 @@ public class RotkoTest {
 
     @Before
     public void setUp() {
-        rotko = new Rotko(76, 93, 4);
+        rotko = new Rotko(76, 93, 4, "rotko", "omarotko.png");
     }
 
     @Test
